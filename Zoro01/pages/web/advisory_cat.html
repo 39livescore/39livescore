@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" th:with="blogConfig=${@configTag.getConfigValueMap('vietnam')}" >
+	
+<head>
+    <th:block th:include="vietnam/blog_include :: blogHeader(title=${cmsCat.remark+' - '+blogConfig['oly.web.title']},
+    keywords=${cmsCat.keywords},
+    description=${cmsCat.description},
+    blogConfig=${blogConfig})" />
+
+    <th:block th:include="vietnam/blog_include::footer_js" />
+</head>
+
+<body id="body">
+    <div class="bgOver">
+        <div class="n-container contentmain-list">
+            <div id="header"><th:block th:include="vietnam/blog_include::menu()" /></div>
+            <!-- banner -->
+            <div class="new-banner">
+                <div class="n-warpper">
+                    <div class="new-banner-main flexBox">
+                        <div class="new-main-title" th:if="${cmsCat!=null}" th:text="${cmsCat.catName}"></div>
+                        <div class="new-main-span flexBox">
+                            <a class="new-href"th:href="${blogConfig['oly.web.domain']}+'/index'">[[#{site.yuenan.home}]]</a>/
+                            <div class="new-href" th:if="${cmsCat!=null}" th:text="'/'+${cmsCat.catName}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="n-warpper detail-newlist">
+                <!-- 大列表 -->
+                <th:block th:include="vietnam/blog_include::searchPage(postList=${postList})" />
+                <!-- 右侧公用列表 -->
+                <th:block th:include="vietnam/blog_include::rightCommon" />
+            </div>
+            <div id="footer" class="indexbox">
+                <!-- 底部导航 -->
+                <th:block th:include="vietnam/blog_include::bottom" />
+            </div>
+            <div id="msgBox">
+                <!-- 底部留言 -->
+                <th:block th:include="vietnam/blog_include::message" />
+            </div>
+            <div id="back-btn">
+                <!-- back -->
+                <th:block th:include="vietnam/blog_include::back" />
+            </div>
+            <div id="top-btn">
+                <!-- top -->
+                <th:block th:include="vietnam/blog_include::gotop" />
+            </div>
+            <div id="contact">
+                <!-- contact -->
+                <th:block th:include="vietnam/blog_include::contact" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    // $('#header').load('./header.html');
+    // $('#footer').load('./footer.html');
+    // $('#msgBox').load('./message.html');
+
+</script>

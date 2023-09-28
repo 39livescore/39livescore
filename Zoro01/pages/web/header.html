@@ -1,0 +1,112 @@
+<header>
+  <!-- header -->
+  <div id="header">
+      <nav
+          th:with="menus=${@menuTag.getMenuTreeById(@configTag.getKey('vietnam','oly.web.theme.vietnam.menu.main'))}">
+          <div class="wrapper">
+              <a class="nav-logo" th:href="${blogConfig['oly.web.domain']==''? '/':blogConfig['oly.web.domain']}">
+                  <img width="250px" th:if="${!#strings.isEmpty(blogConfig['oly.web.logo'])}"
+                      th:src="${blogConfig['oly.web.logo']}" th:alt="${blogConfig['oly.web.title']}" alt="LOGO">
+              </a>
+              <input type="radio" name="slider" id="menu-btn" />
+              <input type="radio" name="slider" id="close-btn" />
+              <ul class="nav-links">
+                  <label for="close-btn" class="btn close-btn">
+                      <img width="20px" height="20px" th:src="@{/themes/vietnam/resources/images/close.png}"
+                          alt="close-btn" />
+                  </label>
+                  <div class="search-nav1">
+                      <input id="keyWord" class="search-input" type="text" placeholder="Nhập để tìm kiếm" />
+                      <img id="search-icon0" class="keySearch"
+                          th:data-url="${blogConfig['oly.web.domain']+'/advisory'}"
+                          th:src="@{/themes/vietnam/resources/images/search-2.png}" alt="search-logo">
+                  </div>
+
+                  <li th:each="column: ${menus.childList}">
+                      <!-- leVER 1-->
+                      <th:block th:if="${#lists.isEmpty(column.childList)}">
+                          <a class="hover-underline" th:target="${column.openType==1?'_blank':'_self'}"
+                              th:href="${#strings.isEmpty(column.columnUrl)?'':column.columnUrl}"
+                              th:text="${column.columnName}">
+                          </a>
+                      </th:block>
+
+                      <!-- lEVER 2 and 3 -->
+                      <th:block th:if="${!#lists.isEmpty(column.childList)}">
+                          <a class="hover-underline desktop-item"
+                              th:target="${column.openType==1?'_blank':'_self'}"
+                              th:href="${#strings.isEmpty(column.columnUrl)?'':column.columnUrl}"
+                              th:text="${column.columnName}">
+                              <!-- icon-left -->
+                              <img th:if="${!#lists.isEmpty(column.childList)}"
+                                  style="width: 15px; height: 15px;margin-left: 5px;"
+                                  th:src="@{/themes/vietnam/resources/images/arrow-down.png}" alt="arrow-down">
+                          </a>
+
+                          <input type="checkbox" class="showMega">
+                          <label th:text="${column.columnName}" for="showMega" class="mobile-item mobi-mega">
+                              <img style="width: 15px; height: 15px;"
+                                  th:src="@{/themes/vietnam/resources/images/arrow-down.png}" alt="arrow-down">
+                          </label>
+                      </th:block>
+
+                      <!-- LEVER 3 -->
+
+                      <div class="mega-box">
+                          <div class="content">
+                              <div class="row" th:each="columnChild: ${column.childList}">
+                                  <!-- IF HAVE CHILD -->
+                                  <th:block th:if="${!#lists.isEmpty(columnChild.childList)}">
+                                      <p style="display: flex;">[[${columnChild.columnName}]] <span>
+                                              <img style="width: 15px; height: 15px;margin-left: 15px;"
+                                                  th:src="@{/themes/vietnam/resources/images/arrow-down.png}"
+                                                  alt="arrow-down">
+                                          </span></p>
+                                      <ul class="mega-links" th:if="${!#lists.isEmpty(columnChild.childList)}">
+                                          <li th:each="columnThird: ${columnChild.childList}"><a
+                                                  th:href="${#strings.isEmpty(columnThird.columnUrl)?'':columnThird.columnUrl}"
+                                                  th:target="${column.openType==1?'_blank':'_self'}"
+                                                  class="hover-underline"
+                                                  href="">[[${columnThird.columnName}]]</a></li>
+                                      </ul>
+                                      <!-- IF HAVE NOT CHILD -->
+                                  </th:block>
+                                  <th:block th:unless="${!#lists.isEmpty(columnChild.childList)}">
+                                      <a class="hover-underline"
+                                          th:href="${#strings.isEmpty(columnThird.columnUrl)?'':columnThird.columnUrl}"
+                                          th:target="${column.openType==1?'_blank':'_self'}">[[${columnChild.columnName}]]
+                                      </a>
+                                  </th:block>
+                              </div>
+
+                          </div>
+                      </div>
+
+                  </li>
+
+              </ul>
+              <div class="search-nav">
+                  <input id="keyWord1" class="search-input" type="text" placeholder="Nhập từ khóa tìm kiếm" />
+                  <img id="search-icon1" class="keySearch1"
+                      th:src="@{/themes/vietnam/resources/images/search-2.png}" alt="search-logo">
+              </div>
+              <label for="menu-btn" class="btn menu-btn">
+                  <img th:src="@{/themes/vietnam/resources/images/fenlei.png}" alt="logo">
+                  </i></label>
+          </div>
+      </nav>
+  </div>
+  <!-- marquee -->
+  <div id="marquee"
+      th:with="posts=${@articleTag.newArticlelistWebArticleByTypeCat('vietnam',10,blogConfig['oly.web.theme.vietnam.cat.zuiXinGongGaoId'],1,3)}">
+      <div class="sub-marquee"> Tin tức mới nhất</div>
+      <div class="inner">
+          <p>
+              <a class="marquee-item" th:each="post,postStat:${posts}"
+                  th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}"
+                  th:text="${post.articleTitle}"></a>
+          </p>
+      </div>
+  </div>
+  <!-- /marquee -->
+</header>

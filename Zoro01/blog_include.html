@@ -1,0 +1,797 @@
+<head th:fragment=blogHeader(title,keywords,description,blogConfig) xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${#strings.isEmpty(title)?'':title}"></title>
+    <meta name="author" th:content="${blogConfig['oly.web.author']}">
+    <meta name="copyright" th:content="${blogConfig['oly.web.copyright']}">
+    <meta name="keywords" th:content="${keywords}">
+    <meta name="description" th:content="${description}">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon"
+        th:href="${#strings.isEmpty(blogConfig['oly.web.ico'])?'/themes/vietnam/resources/images/ico.ico':blogConfig['oly.web.ico']}">
+    <link rel="icon"
+        th:href="${#strings.isEmpty(blogConfig['oly.web.ico'])?'/themes/vietnam/resources/images/ico.ico':blogConfig['oly.web.ico']}">
+    <link rel="stylesheet" th:href="@{/themes/vietnam/resources/model/swiper/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/themes/vietnam/resources/css/index.css}">
+    <link rel="stylesheet" th:href="@{/themes/vietnam/resources/css/media.css}">
+    <link rel="stylesheet" th:href="@{/themes/vietnam/resources/model/ticker/css/ticker-style.css}">
+    <link rel="stylesheet" href="/themes/vietnam/resources/css/vanillatop.min.css">
+    <script src="/themes/vietnam/resources/js/vanillatop.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+
+<!-- 通用JS -->
+
+<div th:fragment="footer_js">
+    <script th:src="@{/themes/vietnam/resources/model/jquery/jquery.min.js}"></script>
+    <script th:src="@{/themes/vietnam/resources/model/swiper/js/swiper.min.js}"></script>
+    <script th:src="@{/themes/vietnam/resources/model/ticker/js/jquery.ticker.js}"></script>
+</div>
+
+<!-- 菜单 -->
+<div th:fragment="menu()">
+    <header>
+        <!-- header -->
+        <div id="header">
+            <nav
+                th:with="menus=${@menuTag.getMenuTreeById(@configTag.getKey('vietnam','oly.web.theme.vietnam.menu.main'))}">
+                <div class="wrapper">
+                    <a class="nav-logo" th:href="${blogConfig['oly.web.domain']==''? '/':blogConfig['oly.web.domain']}">
+                        <img width="250px" th:if="${!#strings.isEmpty(blogConfig['oly.web.logo'])}"
+                            th:src="${blogConfig['oly.web.logo']}" th:alt="${blogConfig['oly.web.title']}" alt="LOGO">
+                    </a>
+                    <input type="radio" name="slider" id="menu-btn" />
+                    <input type="radio" name="slider" id="close-btn" />
+                    <ul class="nav-links">
+                        <label for="close-btn" class="btn close-btn">
+                            <img width="20px" height="20px" th:src="@{/themes/vietnam/resources/images/close.png}"
+                                alt="close-btn" />
+                        </label>
+                        <div class="search-nav1">
+                            <input id="keyWord" class="search-input" type="text" placeholder="Nhập để tìm kiếm" />
+                            <img id="search-icon0" class="keySearch"
+                                th:data-url="${blogConfig['oly.web.domain']+'/advisory'}"
+                                th:src="@{/themes/vietnam/resources/images/search-2.png}" alt="search-logo">
+                        </div>
+
+                        <li th:each="column: ${menus.childList}">
+                            <!-- leVER 1-->
+                            <th:block th:if="${#lists.isEmpty(column.childList)}">
+                                <a class="hover-underline" th:target="${column.openType==1?'_blank':'_self'}"
+                                    th:href="${#strings.isEmpty(column.columnUrl)?'':column.columnUrl}"
+                                    th:text="${column.columnName}">
+                                </a>
+                            </th:block>
+
+                            <!-- lEVER 2 and 3 -->
+                            <th:block th:if="${!#lists.isEmpty(column.childList)}">
+                                <a class="hover-underline desktop-item"
+                                    th:target="${column.openType==1?'_blank':'_self'}"
+                                    th:href="${#strings.isEmpty(column.columnUrl)?'':column.columnUrl}"
+                                    th:text="${column.columnName}">
+                                    <!-- icon-left -->
+                                    <img th:if="${!#lists.isEmpty(column.childList)}"
+                                        style="width: 15px; height: 15px;margin-left: 5px;"
+                                        th:src="@{/themes/vietnam/resources/images/arrow-down.png}" alt="arrow-down">
+                                </a>
+
+                                <input type="checkbox" class="showMega">
+                                <label th:text="${column.columnName}" for="showMega" class="mobile-item mobi-mega">
+                                    <img style="width: 15px; height: 15px;"
+                                        th:src="@{/themes/vietnam/resources/images/arrow-down.png}" alt="arrow-down">
+                                </label>
+                            </th:block>
+
+                            <!-- LEVER 3 -->
+
+                            <div class="mega-box">
+                                <div class="content">
+                                    <div class="row" th:each="columnChild: ${column.childList}">
+                                        <!-- IF HAVE CHILD -->
+                                        <th:block th:if="${!#lists.isEmpty(columnChild.childList)}">
+                                            <p style="display: flex;">[[${columnChild.columnName}]] <span>
+                                                    <img style="width: 15px; height: 15px;margin-left: 15px;"
+                                                        th:src="@{/themes/vietnam/resources/images/arrow-down.png}"
+                                                        alt="arrow-down">
+                                                </span></p>
+                                            <ul class="mega-links" th:if="${!#lists.isEmpty(columnChild.childList)}">
+                                                <li th:each="columnThird: ${columnChild.childList}"><a
+                                                        th:href="${#strings.isEmpty(columnThird.columnUrl)?'':columnThird.columnUrl}"
+                                                        th:target="${column.openType==1?'_blank':'_self'}"
+                                                        class="hover-underline"
+                                                        href="">[[${columnThird.columnName}]]</a></li>
+                                            </ul>
+                                            <!-- IF HAVE NOT CHILD -->
+                                        </th:block>
+                                        <th:block th:unless="${!#lists.isEmpty(columnChild.childList)}">
+                                            <a class="hover-underline"
+                                                th:href="${#strings.isEmpty(columnThird.columnUrl)?'':columnThird.columnUrl}"
+                                                th:target="${column.openType==1?'_blank':'_self'}">[[${columnChild.columnName}]]
+                                            </a>
+                                        </th:block>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                    <div class="search-nav">
+                        <input id="keyWord1" class="search-input" type="text" placeholder="Nhập từ khóa tìm kiếm" />
+                        <img id="search-icon1" class="keySearch1"
+                            th:src="@{/themes/vietnam/resources/images/search-2.png}" alt="search-logo">
+                    </div>
+                    <label for="menu-btn" class="btn menu-btn">
+                        <img th:src="@{/themes/vietnam/resources/images/fenlei.png}" alt="logo">
+                        </i></label>
+                </div>
+            </nav>
+        </div>
+        <!-- marquee -->
+        <div id="marquee"
+            th:with="posts=${@articleTag.newArticlelistWebArticleByTypeCat('vietnam',10,blogConfig['oly.web.theme.vietnam.cat.zuiXinGongGaoId'],1,3)}">
+            <div class="sub-marquee"> Tin tức mới nhất</div>
+            <div class="inner">
+                <p>
+                    <a class="marquee-item" th:each="post,postStat:${posts}"
+                        th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}"
+                        th:text="${post.articleTitle}"></a>
+                </p>
+            </div>
+        </div>
+        <!-- /marquee -->
+    </header>
+</div>
+
+<div th:fragment=bottom>
+    <footer>
+        <div id="footer-box">
+            <div class="n-container">
+                <div class="n-warpper">
+                    <ul class="footer-ul flexBox">
+                        <li class="footer-li">
+                            <div class="footer-logo">
+                                <a th:href="${blogConfig['oly.web.domain']==''? '/':blogConfig['oly.web.domain']}">
+                                    <img th:if="${!#strings.isEmpty(blogConfig['oly.web.logo'])}"
+                                        th:src="${blogConfig['oly.web.logo']}"
+                                        th:alt="${blogConfig['oly.web.title']}" />
+                                </a>
+                            </div>
+                            <div class="footer-search flexBox">
+                                <input autocomplete="off" type="text" id="keyWord1" placeholder="Từ khóa tìm kiếm">
+                                <img class="keySearch1" th:data-url="${blogConfig['oly.web.domain']+'/advisory'}"
+                                    th:src="@{/themes/vietnam/resources/images/search2.png}" alt="">
+                            </div>
+                            <div class="footer-link flexBox"
+                                th:with="tags=${#strings.isEmpty(blogConfig['oly.web.footer'])?'':blogConfig['oly.web.footer'].split(',')}">
+                                <a class="footer-href" th:if="${!#strings.isEmpty(tag)}" th:each="tag:${tags}"
+                                    th:href="${blogConfig['oly.web.domain']+'/advisory?keyWord='+tag}"
+                                    th:utext="${tag}">Thái Sơn</a>
+                            </div>
+
+                        </li>
+                        <li class="footer-li">
+                            <div class="title">
+                                <span class="footer-t">Giới thiệu
+                                    <span class="cirle"></span>
+
+                                </span>
+
+                            </div>
+                            <div class="content">
+                                <p th:utext="${blogConfig['oly.web.aboutSite']}">
+                                    暂无信息
+                                </p>
+                            </div>
+                        </li>
+                        <li class="footer-li">
+                            <div class="title">
+                                <span class="footer-t">Liên hệ nhanh
+                                    <span class="cirle"></span>
+                            </div>
+                            <div class="content">
+                                <p th:utext="${blogConfig['oly.web.authorCall']}">
+                                    暂无信息
+                                </p>
+                            </div>
+                        </li>
+                        <li class="footer-li">
+                            <div class="title">
+                                <span class="footer-t">Thông tin
+                                    <span class="cirle"></span>
+                            </div>
+
+                            <div class="footer-alink flexBox"
+                                th:with="posts=${@articleTag.listWebArticleByTypeCat(9,blogConfig['oly.web.theme.vietnam.cat.dibuAboutId'],1,5)}">
+                                <a th:each="post,postStat:${posts}"
+                                    th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}"
+                                    th:text="${post.articleTitle}"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright ">
+            <div class="n-container flexBox">
+                <div class="n-warpper">
+                    <div class="copyright-box flexBox">
+                        <div>
+                            <p th:text="${blogConfig['oly.web.copyright']}">Copyright 2020~2023, Ban quyen thuc Socolive
+                            </p>
+                        </div>
+                        <div class="copyright-link flexBox">
+                            <a href="https://www.facebook.com/" target="_blank"><img
+                                    th:src="@{/themes/vietnam/resources/img/1.png}" alt=""></a>
+                            <a href="https://www.twitter.com/" target="_blank"><img
+                                    th:src="@{/themes/vietnam/resources/img/2.png}" alt=""></a>
+                            <a href="https://www.youtube.com/" target="_blank"><img
+                                    th:src="@{/themes/vietnam/resources/img/3.png}" alt=""></a>
+                            <a href="https://soundcloud.com/" target="_blank"><img
+                                    th:src="@{/themes/vietnam/resources/img/4.png}" alt=""></a>
+                            <a href="https://t.me/" target="_blank"><img th:src="@{/themes/vietnam/resources/img/5.png}"
+                                    alt=""></a>
+                            <a href="https://www.instagram.com/" target="_blank"><img
+                                    th:src="@{/themes/vietnam/resources/img/6.png}" alt=""></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- 留言弹框 -->
+<div th:fragment=message>
+    <div class="message-box">
+        <div class="msg-box">
+            <div class="close-btn">
+                <img th:src="@{/themes/vietnam/resources/images/close.png}" alt="close" srcset="">
+            </div>
+            <div class="msg-main flexBox">
+                <div class="msg-title">Contact Us</div>
+                <div class="msg-input">
+                    <div class="input-box">
+                        <input type="number" placeholder="Ten" id="phone">
+                        <span>*</span>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Email" id="email">
+                        <span>*</span>
+                    </div>
+                    <div class="input-box">
+                        <textarea name="" id="fromBy" rows="3" placeholder="THU"></textarea>
+                        <span>*</span>
+                    </div>
+                </div>
+                <div class="submit-btn fromByBtn">
+                    <span> Submit</span>
+                </div>
+                <div>Add free live chat to your site</div>
+            </div>
+
+        </div>
+        <div class="send-msg-btn flexBox">
+            <img th:src="@{/themes/vietnam/resources/images/info.png}" alt="Message" srcset="">
+        </div>
+    </div>
+
+    <script>
+        $('.fromByBtn').click(function () {
+            var value = $("#fromBy").get(0).value;
+            var phone = $("#phone").get(0).value;
+            var email = $("#email").get(0).value;
+            if (phone.length === 0) {
+                showMessage('Vui lòng nhập số điện thoại!', 0);
+                return;
+            }
+            if (email.length === 0) {
+                showMessage('Vui lòng nhập địa chỉ hộp thư!', 0);
+                return;
+            }
+            if (!checkEmail(email)) {
+                // 不正确的邮箱格式
+                showMessage('Vui lòng nhập đúng địa chỉ email!', 0);
+                return;
+            }
+            if (value.length < 2) {
+                showMessage('Bình luận Tối thiểu 2 ký tự!', 0);
+                return;
+            }
+            if (value.length > 0) {
+                var data = {
+                    'fromBy': '111',
+                    'typeId': '1',
+                    'content': value,
+                    'phone': phone,
+                    'email': email,
+                    'type': 'SITE',
+                    'remark': 'vietnam'
+                }
+                $.ajax({
+                    async: true,
+                    url: '/web/hand/comment/visitorAddComment',
+                    type: 'POST',
+                    data: { ...data },
+                    dataType: 'json',
+                    timeout: 3000,
+                    success: function (res) {
+                        console.log(res);
+                        if (res.code === 0) {
+                            setTimeout(function () {
+                                $('.msg-box').hide();
+                            }, 500)
+                            showMessage("Thành công", 1);
+                        } else {
+                            showMessage(res.msg, 0);
+                        }
+                    },
+                    error: function (res) {
+
+                    },
+
+                })
+            } else {
+                showMessage('Please enter a message to submit', 0);
+            }
+        })
+
+        $('.send-msg-btn').click(function () {
+            $('.msg-box').show();
+        })
+        $('.close-btn').click(function () {
+            $('.msg-box').hide();
+        })
+
+        var win_h = $(window).height();
+        window.addEventListener('resize', function () {
+            if ($(window).height() < win_h) {
+                $(".message-box").addClass('active');
+            } else {
+                $(".message-box").removeClass('active');
+            }
+        });
+
+        $(".keySearch").click(function () {
+            console.log(1, $("#keyWord").val());
+            console.log(2, $("#keyWord").val() != "");
+            if ($("#keyWord").val() != "") {
+                location.href = $(".keySearch").attr('data-url') + "?keyWord=" + $("#keyWord").val();
+            }
+        });
+        $(".keySearch1").click(function () {
+            console.log(1, $("#keyWord1").val());
+            console.log(2, $("#keyWord1").val() != "");
+            if ($("#keyWord1").val() != "") {
+                location.href = $(".keySearch1").attr('data-url') + "?keyWord=" + $("#keyWord1").val();
+            }
+        });
+        $(".keySearch2").click(function () {
+            console.log(1, $("#keyWord2").val());
+            console.log(2, $("#keyWord2").val() != "");
+            if ($("#keyWord2").val() != "") {
+                location.href = $(".keySearch2").attr('data-url') + "?keyWord=" + $("#keyWord2").val();
+            }
+        });
+
+        function showMessage(message, type) {
+            let messageJQ = $("<div class='showMessage'>" + message + "</div>");
+            if (type == 0) {
+                messageJQ.addClass("showMessageError");
+            } else if (type == 1) {
+                messageJQ.addClass("showMessageSuccess");
+            }
+            // 先将原始隐藏，然后添加到页面，最后以400毫秒的速度下拉显示出来
+            messageJQ.hide().appendTo("body").slideDown(400);
+            // 4秒之后自动删除生成的元素
+            window.setTimeout(function () {
+                messageJQ.show().slideUp(400, function () {
+                    messageJQ.remove();
+                })
+            }, 4000);
+        }
+        function checkEmail(email) {
+            var reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (reg.test(email)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</div>
+
+<!-- 搜索列表页 -->
+<div th:fragment=searchPage(postList)>
+    <!-- 文章列表 -->
+    <div class="new-body">
+        <!--      <p th:text="${postList}"></p>-->
+        <!--      <p th:text="${postList.pageNum}"></p>-->
+        <input type="hidden" th:value="${postList.pageNum}" id="pageNum">
+        <input type="hidden" th:value="${blogConfig['oly.web.domain']}" id="webUrl2">
+        <ul class="new-bodyul flexBox">
+            <li class="new-bodyli" th:each="post,postStat:${postList.rows}">
+                <a class="new-bodyhref flexBox" th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}">
+                    <div class="new-body-m new-body-l">
+                        <img th:src="${post.articleImg}" alt="">
+                    </div>
+                    <div class="new-body-m new-body-r">
+                        <div class="new-body-title textWordBreak" th:text="${post.articleTitle}">Man Utd mở cuộc đàm
+                            phán với tiền vệ chấtlượ-ng, gà
+                            nhà sắp ra đi</div>
+                        <div class="new-body-brief textWordBreak" th:utext="${post.articleSummary}">Tờ Sport nổi tiếng
+                            của Tây Ban Nha đã đưa tin rằng
+                            câu lạc bộ Man Utdđ-
+                            ã đàm phán với tiền vệ xuất sắc Ruben Neves của Wolves. Cầu thủ kỳ cự-
+                            u người Bồ Đào Nha được cho là sẽ rời sân Molineux khi hợp đồng ...</div>
+                        <div class="article-info flexBox">
+                            <div class="art-time" th:text="${#dates.format(post.createTime,'yyyy-MM-dd')}">2023-02-09
+                            </div>
+                            <!--
+                        <div class="art-handle flexBox">
+                            <div class="likebox flexBox">
+                                <img th:src="@{/themes/vietnam/resources/images/like.png}" alt="">
+                                <span th:text="${post.cmsArticleCount==null?0:post.cmsArticleCount.articleLook}">123</span>
+                            </div>
+                            <div class=" flexBox">
+                                <img th:src="@{/themes/vietnam/resources/images/comment.png}" alt="">
+                                <span th:text="${post.cmsArticleCount==null?0:post.cmsArticleCount.articleDiscuss}">123</span>
+                            </div>
+                        </div>
+                        -->
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <!--分页-->
+    <div class="pageBox flexBox">
+        <div class="prev-page t-page flexBox" th:if="${postList.pageNum >1}" onclick="goLastToPage()">
+            <div class="img-page flexBox">
+                <img class="img-page-l" src="../themes/vietnam/resources/images/page.png" alt="">
+                <img class="img-page-r" src="../themes/vietnam/resources/images/page-r.png" alt="">
+            </div>
+            <div class="text-page">trang trước</div>
+        </div>
+        <div class="next-page t-page flexBox" th:if="${postList.pages - postList.pageNum >0}" onclick="goNextToPage()">
+            <div class="text-page">trang tiếp theo</div>
+            <div class="img-page flexBox">
+                <img class="next-img img-page-l" src="../themes/vietnam/resources/images/page.png" alt="">
+                <img class="next-img img-page-r" src="../themes/vietnam/resources/images/page-r.png" alt="">
+            </div>
+
+        </div>
+
+        <script>
+            $('.t-page').hover(function () {
+
+                $(this).addClass('active');
+            }, function () {
+                $('.pageBox .t-page').removeClass('active')
+            })
+
+            var webUrl = $('#webUrl2').get(0).value;
+
+            function goLastToPage() {
+                var pageNum = $('#pageNum').get(0).value;
+                var catId = getpageParams('catId');
+
+                if (pageNum == 1) {
+                    return;
+                } else {
+                    pageNum = pageNum - 1;
+                }
+                var keyWord = getpageParams('keyWord');
+                if (keyWord != null) {
+                    location.href = `${webUrl}/advisory?keyWord=${keyWord}&pageNum=${pageNum}`
+                } else {
+                    location.href = `${webUrl}/advisory_cat?catId=${catId}&pageNum=${pageNum}`
+                }
+
+            };
+
+            function goNextToPage() {
+
+                var pageNum = $('#pageNum').get(0).value;
+                var catId = getpageParams('catId');
+                var pageNum = parseInt(pageNum) + 1;
+                console.log(pageNum);
+                var keyWord = getpageParams('keyWord');
+                if (keyWord != null) {
+                    location.href = `${webUrl}/advisory?keyWord=${keyWord}&pageNum=${pageNum}`
+                } else {
+                    location.href = `${webUrl}/advisory_cat?catId=${catId}&pageNum=${pageNum}`
+                    //location.href = `http://localhost:8090/china/advisory_cat?catId=${catId}&pageNum=${pageNum}`
+                }
+
+            };
+            // 获取参数
+            function getpageParams(key) {
+                var result = {} // 定义一个全局的对象
+                var str = window.location.search;
+                if (str.startsWith('?')) { // 判断str以？开头的
+                    var strParams = str.split('?')[1];
+                    var arrParams = strParams.split('&');
+                    //然后进行for循环，这里直接用了forEach
+                    arrParams.forEach((item) => {
+                        var temKey = item.split('=')[0];
+                        var temVal = item.split('=')[1];
+                        result[temKey] = temVal
+                    })
+                }
+                return result[key]
+            };
+
+        </script>
+
+    </div>
+
+    <!--<div class="add-more flexBox" th:if="${postList.pages>1}">
+    &lt;!&ndash; <div class="add-btn"></div> &ndash;&gt;
+      &lt;!&ndash; 分页按钮 &ndash;&gt;
+      <div th:if="${postList.pageNum>1}">
+        <a th:href="${blogConfig['oly.web.domain']+'/advisory?keyWord='+entity.keyWord+'&pageNum='+(postList.pageNum-1)}"
+          class="page-this">
+          <img th:src="@{/themes/vietnam/resources/images/left1.png}" alt="" class="icon-1">
+          <img th:src="@{/themes/vietnam/resources/images/left2.png}" alt="" class="icon-2">
+          <span class="add-btn">
+            Trang trước
+          </span>
+        </a>
+      </div>
+      <div>
+        <a th:href="${blogConfig['oly.web.domain']+'/advisory?keyWord='+entity.keyWord+'&pageNum='+(postList.pageNum+1)}"
+          class="page-this" th:if="${postList.pages>postList.pageNum}">
+          <span class="add-btn">
+            Trang tiếp theo
+          </span>
+          <img th:src="@{/themes/vietnam/resources/images/right1.png}" alt="" class="icon-1">
+          <img th:src="@{/themes/vietnam/resources/images/right2.png}" alt="" class="icon-2">
+        </a>
+        </div>
+   </div>-->
+
+</div>
+
+<div th:fragment=rightCommon>
+         <!-- HOT NEWS-->
+         <div class="n-warpper">
+            <div class="section-title">
+                <div class="section-container">
+                    <section class="section-box">
+                        <div class="section-title">
+                        Tin Tức Mới
+                        </div>
+                      
+                    </section>
+                </div>
+            </div>
+
+            <!-- menu4-active-->
+            <ul class="menu-4">
+                <li class="current"><button  data-hover="Tin tức nóng">Tin tức nóng</button></li>
+                <li><button  data-hover="Tin tức trong nước">Tin tức trong nước</button></li>
+                <li><button data-hover="Tin tức quốc tế">Tin tức quốc tế</button></li>
+                <li><button data-hover="Tin tức nóng bóng đá">Tin tức nóng bóng đá</button></li>
+                <li><button data-hover="Tin tức bóng rổ">Tin tức bóng rổ</button></li>
+                <li><button data-hover="Tin tức chuyển nhượng">Tin tức chuyển nhượng</button></li>
+              </ul>
+
+            <!-- articles 1 active-->
+            <section class="articles articles-active"  th:with="posts=${@articleTag.listWebArticleByTypeCat(9,247,1,8)}">                  
+                <article th:each="post,postStat:${posts}">
+                    <div class="article-wrapper">
+                      <figure>
+                        <img th:src="${post.articleImg}" alt="" />
+                      </figure>
+                      <div class="article-body">
+                          <p style="font-size: 15px;"   th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                          </p>
+                        <h2 style="display: -webkit-box;
+                        -webkit-line-clamp: 3; 
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;" 
+                        th:text="${post.articleTitle}"
+                        >
+                        </h2>
+                        <a th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" class="read-more">
+                          Read more <span class="sr-only">about this is some title</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>                    
+              </section>
+
+            <!-- articles 2 active-->
+            <section class="articles "  th:with="posts=${@articleTag.listWebArticleByTypeCat(9,248,1,8)}">                  
+              <article th:each="post,postStat:${posts}">
+                  <div class="article-wrapper">
+                    <figure>
+                      <img th:src="${post.articleImg}" alt="" />
+                    </figure>
+                    <div class="article-body">
+                        <p style="font-size: 15px;"   th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                        </p>
+                      <h2 style="display: -webkit-box;
+                      -webkit-line-clamp: 3; 
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;" 
+                      th:text="${post.articleTitle}"
+                      >
+                      </h2>
+                      <a th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" class="read-more">
+                        Read more <span class="sr-only">about this is some title</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>                    
+            </section>
+             
+            <!-- articles 3 active-->
+            <section class="articles articles-active"  th:with="posts=${@articleTag.listWebArticleByTypeCat(9,249,1,8)}">                  
+              <article th:each="post,postStat:${posts}">
+                  <div class="article-wrapper">
+                    <figure>
+                      <img th:src="${post.articleImg}" alt="" />
+                    </figure>
+                    <div class="article-body">
+                        <p style="font-size: 15px;"   th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                        </p>
+                      <h2 style="display: -webkit-box;
+                      -webkit-line-clamp: 3; 
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;" 
+                      th:text="${post.articleTitle}"
+                      >
+                      </h2>
+                      <a th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" class="read-more">
+                        Read more <span class="sr-only">about this is some title</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>                    
+            </section>
+            
+            <!-- articles 4 active-->
+            <section class="articles articles-active"  th:with="posts=${@articleTag.listWebArticleByTypeCat(9,250,1,8)}">                  
+              <article th:each="post,postStat:${posts}">
+                  <div class="article-wrapper">
+                    <figure>
+                      <img th:src="${post.articleImg}" alt="" />
+                    </figure>
+                    <div class="article-body">
+                        <p style="font-size: 15px;"   th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                        </p>
+                      <h2 style="display: -webkit-box;
+                      -webkit-line-clamp: 3; 
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;" 
+                      th:text="${post.articleTitle}"
+                      >
+                      </h2>
+                      <a th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" class="read-more">
+                        Read more <span class="sr-only">about this is some title</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>                    
+            </section>
+            
+            <!-- articles 5 active-->
+            <section class="articles articles-active"  th:with="posts=${@articleTag.listWebArticleByTypeCat(9,251,1,8)}">                  
+              <article th:each="post,postStat:${posts}">
+                  <div class="article-wrapper">
+                    <figure>
+                      <img th:src="${post.articleImg}" alt="" />
+                    </figure>
+                    <div class="article-body">
+                        <p style="font-size: 15px;"   th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                        </p>
+                      <h2 style="display: -webkit-box;
+                      -webkit-line-clamp: 3; 
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;" 
+                      th:text="${post.articleTitle}"
+                      >
+                      </h2>
+                      <a th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" class="read-more">
+                        Read more <span class="sr-only">about this is some title</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>                    
+            </section>
+            
+            <!-- articles 6 active-->
+            <section class="articles articles-active"  th:with="posts=${@articleTag.listWebArticleByTypeCat(9,252,1,8)}">                  
+              <article th:each="post,postStat:${posts}">
+                  <div class="article-wrapper">
+                    <figure>
+                      <img th:src="${post.articleImg}" alt="" />
+                    </figure>
+                    <div class="article-body">
+                        <p style="font-size: 15px;"   th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                        </p>
+                      <h2 style="display: -webkit-box;
+                      -webkit-line-clamp: 3; 
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;" 
+                      th:text="${post.articleTitle}"
+                      >
+                      </h2>
+                      <a th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" class="read-more">
+                        Read more <span class="sr-only">about this is some title</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>                    
+            </section>
+        </div>
+        <!-- --------------------------------------------------------------------- -->
+</div>
+
+<!-- 到达顶部 -->
+<div th:fragment=gotop>
+    <button class="vanillatop"></button>
+
+    <link rel="stylesheet" href="/themes/vietnam/resources/css/vanillatop.min.css">
+    <script src="/themes/vietnam/resources/js/vanillatop.min.js"></script>
+</div>
+
+<!-- back -->
+<div th:fragment=back>
+    <img th:src="@{/themes/vietnam/resources/images/back.png}" alt="" srcSet="">
+    <script>
+        $('#back-btn').click(function () {
+            history.back();
+        })
+    </script>
+</div>
+
+<!-- 联系link -->
+<div th:fragment=contact>
+    <div id="share-btn" class="">
+        <div class="share-box flexBox">
+            <a href="https://t.me/" class="contact-link flexBox">
+                <img th:src="@{/themes/vietnam/resources/images/telegram.png}" alt="">
+            </a>
+            <a href="https://www.youtube.com/" class="contact-link flexBox">
+                <img th:src="@{/themes/vietnam/resources/images/Youtube.png}" alt="">
+            </a>
+            <a href="ttps://www.facebook.com/" class="contact-link flexBox">
+                <img th:src="@{/themes/vietnam/resources/images/facebookf.png}" alt="">
+            </a>
+            <a href="https://www.instagram.com/" class="contact-link flexBox">
+                <img th:src="@{/themes/vietnam/resources/images/instagram.png}" alt="">
+            </a>
+            <a href="https://www.twitter.com/" class="contact-link flexBox">
+                <img th:src="@{/themes/vietnam/resources/images/twitter.png}" alt="">
+            </a>
+        </div>
+    </div>
+</div>

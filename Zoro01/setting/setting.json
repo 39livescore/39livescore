@@ -1,0 +1,161 @@
+{
+    "schema": {
+        "oly_web_theme_vietnam_post_now": {
+            "type": "integer",
+            "title": "最新发布条数:"
+        },
+        "oly_web_theme_vietnam_post_top": {
+            "type": "integer",
+            "title": "文章推荐条数:"
+        },
+        "oly_web_theme_vietnam_post_look": {
+            "type": "integer",
+            "title": "阅读排行条数:"
+        },
+        "oly_web_theme_vietnam_menu_main": {
+            "type": "integer",
+            "title": "主导航ID:"
+        },
+        "oly_web_theme_vietnam_docs_catId": {
+            "type": "integer",
+            "title": "分类树ID:"
+        },
+        "oly_web_theme_vietnam_docs_defaultPostId": {
+            "type": "integer",
+            "title": "默认文档ID:"
+        },
+        "oly_web_theme_vietnam_docs_size": {
+            "type": "integer",
+            "title": "请求条数:"
+        },
+        "oly_web_theme_vietnam_docs_order": {
+            "type": "string",
+            "title": "默认排序:",
+            "enum": [
+                "ASC",
+                "DESC"
+            ]
+        },
+        "oly_web_theme_vietnam_union_size": {
+            "type": "integer",
+            "title": "请求条数:"
+        },
+        "oly_web_theme_vietnam_union_order": {
+            "type": "string",
+            "title": "默认排序:",
+            "enum": [
+                "ASC",
+                "DESC"
+            ]
+        },
+        "oly_web_theme_vietnam_union_youTag": {
+            "type": "integer",
+            "title": "省钱标签ID:"
+        },
+        "oly_web_theme_vietnam_union_wealTag": {
+            "type": "integer",
+            "title": "福利标签ID:"
+        },
+        "oly_web_theme_vietnam_union_articleSize": {
+            "type": "integer",
+            "title": "文章条数:"
+        },
+        "oly_web_theme_vietnam_union_tuiSize": {
+            "type": "integer",
+            "title": "推荐条数:"
+        },
+        "oly_web_theme_vietnam_union_catType": {
+            "type": "integer",
+            "title": "分类类型:"
+        },
+        "oly_web_theme_vietnam_union_catId": {
+            "type": "integer",
+            "title": "分类ID:"
+        }
+    },
+    "form": [
+        {
+            "type": "fieldset",
+            "items": [
+                {
+                    "type": "tabs",
+                    "id": "navtabs",
+                    "items": [
+                        {
+                            "title": "右边栏",
+                            "type": "tab",
+                            "items": [
+                                {
+                                    "key": "oly_web_theme_vietnam_post_now"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_post_now"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_post_look"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "主题设置",
+                            "type": "tab",
+                            "items": [
+                                {
+                                    "key": "oly_web_theme_vietnam_menu_main"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "文档设置",
+                            "type": "tab",
+                            "items": [
+                                {
+                                    "key": "oly_web_theme_vietnam_docs_catId"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_docs_defaultPostId"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_docs_size"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_docs_order"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "联盟设置",
+                            "type": "tab",
+                            "items": [
+                                {
+                                    "key": "oly_web_theme_vietnam_union_size"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_order"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_youTag"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_wealTag"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_articleSize"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_tuiSize"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_catType"
+                                },
+                                {
+                                    "key": "oly_web_theme_vietnam_union_catId"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

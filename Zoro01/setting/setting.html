@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<th:block th:include="include :: header('主题设置')" />
+	<th:block th:include="include::bootstrap-select-css" />
+</head>
+
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<div class="tabs-container">
+			<ul class="nav nav-tabs" id="config-title">
+				<li class="active"><a data-toggle="tab" href="#common" aria-expanded="true">右边栏</a>
+				</li>
+				<li class=""><a data-toggle="tab" href="#theme" aria-expanded="true">主题设置</a>
+				</li>
+				<li class=""><a data-toggle="tab" href="#docs" aria-expanded="true">文档设置</a>
+				</li>
+				<li class=""><a data-toggle="tab" href="#union" aria-expanded="true">联盟设置</a>
+				</li>
+			</ul>
+			<div class="tab-content" th:with="themeConfig=${@configTag.getConfigValueMap('vietnam')}">
+				<!-- 首页设置 -->
+				<div id="common" class="tab-pane active">
+					<div class="panel-body">
+						<form class="form-horizontal m" id="form-common">
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">最新发布：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.post.now"
+										th:value="${themeConfig['oly.web.theme.vietnam.post.now']}" class="form-control"
+										type="number">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">文章推荐：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.post.top"
+										th:value="${themeConfig['oly.web.theme.vietnam.post.top']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">阅读排行：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.post.look"
+										th:value="${themeConfig['oly.web.theme.vietnam.post.look']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- 主题设置 -->
+				<div id="theme" class="tab-pane">
+					<div class="panel-body">
+						<form class="form-horizontal m" id="form-theme">
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">主导航：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.menu.main"
+										th:value="${themeConfig['oly.web.theme.vietnam.menu.main']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 文档设置 -->
+				<div id="docs" class="tab-pane">
+					<div class="panel-body">
+						<form class="form-horizontal m" id="form-docs">
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">分类树：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.docs.catId"
+										th:value="${themeConfig['oly.web.theme.vietnam.docs.catId']}"
+										class="form-control" type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">默认文档：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.docs.defaultPostId"
+										th:value="${themeConfig['oly.web.theme.vietnam.docs.defaultPostId']}"
+										class="form-control" type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">请求条数：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.docs.size"
+										th:value="${themeConfig['oly.web.theme.vietnam.docs.size']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">排序：</label>
+								<div class="col-sm-8">
+									<select class="form-control" name="oly.web.theme.vietnam.docs.order">
+										<option value="ASC"
+											th:selected="${themeConfig['oly.web.theme.vietnam.docs.order']=='ASC'}">ASC
+										</option>
+										<option value="DESC"
+											th:selected="${themeConfig['oly.web.theme.vietnam.docs.order']=='DESC'}">DESC
+										</option>
+									</select>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 联盟设置 -->
+				<div id="union" class="tab-pane">
+					<div class="panel-body">
+						<form class="form-horizontal m" id="form-union">
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">请求条数：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.size"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.size']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">默认排序：</label>
+								<div class="col-sm-8">
+									<select class="form-control" name="oly.web.theme.vietnam.union.order">
+										<option value="ASC"
+											th:selected="${themeConfig['oly.web.theme.vietnam.union.order']=='ASC'}">ASC
+										</option>
+										<option value="DESC"
+											th:selected="${themeConfig['oly.web.theme.vietnam.union.order']=='DESC'}">DESC
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">省钱标签：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.youTag"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.youTag']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">福利标签：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.wealTag"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.wealTag']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">文章条数：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.articleSize"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.articleSize']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">推荐条数：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.tuiSize"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.tuiSize']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">分类类型：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.catType"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.catType']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label is-">分类ID：</label>
+								<div class="col-sm-8">
+									<input name="oly.web.theme.vietnam.union.catId"
+										th:value="${themeConfig['oly.web.theme.vietnam.union.catId']}" class="form-control"
+										type="number">
+									</input>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<br>
+			<button type="button" class="btn btn-w-m btn-primary center-block" id="submit-btn">修改</button>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include::bootstrap-select-js" />
+	<script type="text/javascript" th:inline="javascript">
+		var prefix = ctx + "system/config";
+		var myForm = "form-common";
+		$('#config-title a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+			myForm = $(this).attr('href').replace("#", "form-");
+		});
+
+		function submitHandler() {
+			var data = $("#" + myForm).serializeArray();
+			data.push({
+				"name": "configGroup",
+				"value": [[${ configGroup }]]
+			});
+			$.operate.saveModal(prefix + "/updateByGk", data);
+		}
+		$("#submit-btn").click(function () {
+			submitHandler();
+		})
+	</script>
+</body>
+
+</html>

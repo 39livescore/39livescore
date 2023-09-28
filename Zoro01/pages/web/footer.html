@@ -1,0 +1,93 @@
+<footer>
+    <div id="footer-box">
+        <div class="n-container">
+            <div class="n-warpper">
+                <ul class="footer-ul flexBox">
+                    <li class="footer-li">
+                        <div class="footer-logo">
+                            logo
+                        </div>
+                       
+                        <div class="footer-link flexBox" th:with="tags=${#strings.isEmpty(blogConfig['oly.web.footer'])?'':blogConfig['oly.web.footer'].split(',')}">
+                            <a class="footer-href" th:if="${!#strings.isEmpty(tag)}" th:each="tag:${tags}"   href="${blogConfig['oly.web.domain']+'/advisory?keyWord='+tag}" th:utext="${tag}" >Thái Sơn</a>
+                        </div>
+                    </li>
+                    <li class="footer-li">
+                        <div class="title">
+                            <span class="footer-t">Giới thiệu
+                                <span class="cirle"></span>
+
+                            </span>
+
+                        </div>
+                        <div class="content">
+                            <p th:utext="${blogConfig['oly.web.aboutSite']}">
+                                暂无信息
+                            </p>
+                        </div>
+                    </li>
+                    <li class="footer-li">
+                        <div class="title">
+                            <span class="footer-t">Liên hệ nhanh
+                                <span class="cirle"></span>
+                        </div>
+                        <div class="content">
+                            <p th:utext="${blogConfig['oly.web.authorCall']}">
+                                暂无信息
+                            </p>
+                        </div>
+                    </li>
+                    <li class="footer-li">
+                        <div class="title">
+                            <span class="footer-t">Thông tin
+                                <span class="cirle"></span>
+                        </div>
+                        <div class="footer-alink flexBox" th:with="posts=${@articleTag.listWebArticleByTypeCat(9,blogConfig['oly.web.theme.vietnam.cat.dibuAboutId'],1,5)}">
+                            <p th:each="post,postStat:${posts}">
+                                <a 
+                                th:href="${blogConfig['oly.web.domain']+'/post/'+post.articleId}" th:text="${post.articleTitle}"
+                                style="display: flex;  align-items: center; font-size: 16px;cursor: pointer;">
+                                    <img width="7px" src="../resources/images/arrow.svg" alt="arrow-right">
+                                    <img width="7px" src="../resources/images/arrow.svg" alt="arrow-right">
+                                 <span style="margin-left: 5px;"> Home</span>
+                                 </a>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyright ">
+        <div class="n-container flexBox">
+            <div class="n-warpper">
+                <div class="copyright-box flexBox">
+                    <div>
+                        Copyright 2020~2023, Ban quyen thuc Socolive
+                    </div>
+                    <div class="copyright-link flexBox">
+                        <a href="https://www.twitter.com/">
+                            <img src="../resources/images/twitter.png" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/">
+                            <img src="../resources/images/facebookf.png" alt="">
+                        </a>
+                        <a href="https://www.youtube.com/">
+                            <img src="../resources/images/Youtube.png" alt="">
+                        </a>
+                        <a href="https://soundcloud.com/">
+                            <img src="../resources/images/soundcloud.png" alt="">
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <img src="../resources/images/instagram.png" alt="">
+                        </a>
+                        <a href="https://t.me/">
+                            <img src="../resources/images/telegram.png" alt="">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>

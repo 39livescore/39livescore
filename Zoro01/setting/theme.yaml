@@ -1,0 +1,36 @@
+themeData:
+  themeName: vietnam
+  themeAuthor: 越南
+  themeVersion: v.1.0
+  themeTouch: mail:17678999888@qq.com,phone:17678999888
+  themeInfo: 越南主题
+  themeWebsit: 
+themeConfig:
+  - configGroup: vietnam
+    configKey: oly.web.theme.vietnam.post.now
+    configName: 最新发布
+    configType: 0
+    configValue: 10
+    configValueType: 3
+    remark: 最新发布请求条数
+  - configGroup: vietnam
+    configKey: oly.web.theme.vietnam.post.top
+    configName: 文章推荐
+    configType: 0
+    configValue: 10
+    configValueType: 3
+    remark:  文章推荐请求条数 
+  - configGroup: vietnam
+    configKey: oly.web.theme.vietnam.post.look
+    configName: 阅读排行
+    configType: 0
+    configValue: 10
+    configValueType: 3
+    remark: 阅读排行请求条数
+  - configGroup: vietnam
+    configKey: oly.web.theme.vietnam.menu.main
+    configName: 主导航
+    configType: 0
+    configValue: 23
+    configValueType: 3
+    remark:  主导航根节点

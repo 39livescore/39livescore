@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="blogConfig=${@configTag.getConfigValueMap('vietnam')}" >
+
+<head>
+    <th:block th:include="vietnam/blog_include :: blogHeader(title=${menu.remark+' - '+blogConfig['oly.web.title']},
+    keywords=${blogConfig['oly.web.aboutAuthor']},
+    description=${blogConfig['oly.web.authorIndex']},
+    blogConfig=${blogConfig})" />
+
+    <th:block th:include="vietnam/blog_include::footer_js" />
+</head>
+
+<body id="body">
+<div class="bgOver">
+    <div class="n-container contentmain-list">
+        <div id="header"><th:block th:include="vietnam/blog_include::menu()" /></div>
+        <div class="n-warpper live-list">
+            <!-- 直播信息 -->
+            <div class="live-bg flexBox" id="matchDetail">
+                <div class="live-name">Nhà hàng Esaichao</div>
+                <div class="live-time">2023-06-02 17:00</div>
+                <div class="live-rival flexBox">
+                    <div class="rival-info flexBox">
+                        <span class="rival-name textWordBreak">Thành phố Awasha
+                            </span>
+                    </div>
+                    <div class="rival-score">0 - 0</div>
+                    <div class="rival-info flexBox">
+                        <span class="rival-name textWordBreak">Thành phố Awasha
+                            </span>
+                    </div>
+                </div>
+                <div>Phát sóng trực tiếp</div>
+            </div>
+            <!-- 直播列表信息 -->
+            <div class="live-info-list">
+                <div class="live-info">
+                    <ul class="live-info-ul flexBox" >
+                        <!-- 高亮添加active -->
+                        <li class="live-info-li active">
+                                <span>Phân tích trước trận đấu
+                                </span>
+                        </li>
+                        <li class="live-info-li">
+                                <span>Báo cáo trận đấu
+                                </span>
+                        </li>
+                    </ul>
+                    <!-- 表格信息 -->
+                    <div class="live-table">
+                        <ul class="live-table-ul">
+                            <li class="live-table-li">
+                                <div class="live-table-name flexBox">
+                                    <img th:src="@{/themes/vietnam/resources/resources/images/ball.png}" alt="">
+                                    <span>Đối đầu - Lịch sử</span>
+                                </div>
+                                <!-- 表格头部信息 -->
+                                <div class="live-table-header flexBox">
+                                    <div class="h-item">Ngày tháng</div>
+                                    <div class="h-item">Sự kiện thể thao</div>
+                                    <div class="h-item">Đội chủ nhà</div>
+                                    <div class="h-item">Kết quả sự kiện</div>
+                                    <div class="h-item">Đội khách</div>
+                                </div>
+                                <!-- 表格内容列表 -->
+                                <ul class="live-table-body " id="histories">
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="live-table">
+                        <ul class="live-table-ul">
+                            <li class="live-table-li">
+                                <div class="live-table-name flexBox">
+                                    <img th:src="@{/themes/vietnam/resources/resources/images/ball.png}" alt="">
+                                    <span>Đối đầu - Lịch sử</span>
+                                </div>
+                                <!-- 表格头部信息 -->
+                                <div class="live-table-header flexBox">
+                                    <div class="h-item">Ngày tháng</div>
+                                    <div class="h-item">Sự kiện thể thao</div>
+                                    <div class="h-item">Đội chủ nhà</div>
+                                    <div class="h-item">Kết quả sự kiện</div>
+                                    <div class="h-item">Đội khách</div>
+                                </div>
+                                <!-- 表格内容列表 -->
+                                <ul class="live-table-body " id="awayFutureMatches">
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="live-table">
+                        <ul class="live-table-ul">
+                            <li class="live-table-li">
+                                <div class="live-table-name flexBox">
+                                    <img th:src="@{/themes/vietnam/resources/resources/images/ball.png}" alt="">
+                                    <span>Đối đầu - Lịch sử</span>
+                                </div>
+                                <!-- 表格头部信息 -->
+                                <div class="live-table-header flexBox">
+                                    <div class="h-item">Ngày tháng</div>
+                                    <div class="h-item">Sự kiện thể thao</div>
+                                    <div class="h-item">Đội chủ nhà</div>
+                                    <div class="h-item">Kết quả sự kiện</div>
+                                    <div class="h-item">Đội khách</div>
+                                </div>
+                                <!-- 表格内容列表 -->
+                                <ul class="live-table-body " id="awayRecentRecords">
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="live-table">
+                        <ul class="live-table-ul">
+                            <li class="live-table-li">
+                                <div class="live-table-name flexBox">
+                                    <img th:src="@{/themes/vietnam/resources/resources/images/ball.png}" alt="">
+                                    <span>Đối đầu - Lịch sử</span>
+                                </div>
+                                <!-- 表格头部信息 -->
+                                <div class="live-table-header flexBox">
+                                    <div class="h-item">Ngày tháng</div>
+                                    <div class="h-item">Sự kiện thể thao</div>
+                                    <div class="h-item">Đội chủ nhà</div>
+                                    <div class="h-item">Kết quả sự kiện</div>
+                                    <div class="h-item">Đội khách</div>
+                                </div>
+                                <!-- 表格内容列表 -->
+                                <ul class="live-table-body " id="homeFutureMatches">
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="live-table">
+                        <ul class="live-table-ul">
+                            <li class="live-table-li">
+                                <div class="live-table-name flexBox">
+                                    <img th:src="@{/themes/vietnam/resources/resources/images/ball.png}" alt="">
+                                    <span>Đối đầu - Lịch sử</span>
+                                </div>
+                                <!-- 表格头部信息 -->
+                                <div class="live-table-header flexBox">
+                                    <div class="h-item">Ngày tháng</div>
+                                    <div class="h-item">Sự kiện thể thao</div>
+                                    <div class="h-item">Đội chủ nhà</div>
+                                    <div class="h-item">Kết quả sự kiện</div>
+                                    <div class="h-item">Đội khách</div>
+                                </div>
+                                <!-- 表格内容列表 -->
+                                <ul class="live-table-body " id="homeRecentRecords">
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                    <li class="live-table-line flexBox">
+                                        <div class="b-item">2023-06-02 17:00</div>
+                                        <div class="b-item">Nhà hàng Esaichao</div>
+                                        <div class="b-item">Nhà hàng Voletta Dicha</div>
+                                        <div class="b-item">1-1</div>
+                                        <div class="b-item">Thành phố Awasha</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="indexbox">
+            <!-- 底部导航 -->
+            <th:block th:include="vietnam/blog_include::bottom" />
+        </div>
+        <div id="msgBox">
+            <!-- 底部留言 -->
+            <th:block th:include="vietnam/blog_include::message" />
+        </div>
+        <div id="back-btn">
+            <!-- back -->
+            <th:block th:include="vietnam/blog_include::back" />
+        </div>
+        <div id="top-btn">
+            <!-- top -->
+            <th:block th:include="vietnam/blog_include::gotop" />
+        </div>
+        <div id="contact">
+            <!-- contact -->
+            <th:block th:include="vietnam/blog_include::contact" />
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:include="vietnam/blog_include::footer_js" />
+</html>
+<script type="text/javascript">
+    var matchId = "",sportsId="";
+    var histories=[],matchDetail=[],homeFutureMatches=[],homeRecentRecords=[],awayFutureMatches=[] ,awayRecentRecords=[];
+    $(document).ready(function() {
+        var year = new Date().getFullYear();
+        var month = new Date().getMonth()+1;
+        var day = new Date().getDate();
+        if(month > 0 & month < 10){
+            month = '0' + month;
+        }
+        if(day > 0 & day < 10){
+            day = '0' + day;
+        }
+        var date = year + '/' + month + '/' + day
+        // console.log(date);
+        // console.log(getCommonTime(1685161800));
+        // console.log(inArray(4));
+        // console.log(inArray(6));
+        console.log(getParams('id'))
+        matchId = getParams('id');
+        sportsId = getParams('type');
+        getData();
+
+    })
+    function tabClick(e,index){
+        $(e).addClass('on').siblings().removeClass('on');
+    }
+    // xrHtml
+    function xrHtml(){
+        var matchDetailHtml = ''; // 基本信息
+        var historiesHtml = ''; // 历史交锋
+        var awayFutureMatchesHtml = ''; // 未来赛事 - 客队
+        var awayRecentRecordsHtml = ''; // 近期战绩 - 客队
+        var homeFutureMatchesHtml = ''; // 未来赛事 - 主队
+        var homeRecentRecordsHtml = ''; // 近期战绩 - 主队
+        // <div class="ssBottom">
+        // 	<p>视频直播</p>
+        // 	<span>jiji</span>
+        // 	<span>jiji</span>
+        // </div>
+        var fs = ""
+        var matchDetailarr = JSON.parse(matchDetail.score);
+        console.log(matchDetailarr);
+        if(matchDetailarr.home.hasOwnProperty("score")){
+            fs = `${JSON.parse(matchDetail.score).home.score} - ${JSON.parse(matchDetail.score).away.score}`
+        }else{
+            var num1 = Number(matchDetailarr.home.round1) + Number(matchDetailarr.home.round2) + Number(matchDetailarr.home
+                .round3) + Number(matchDetailarr.home.round4);
+            var num2 = Number(matchDetailarr.away.round1) + Number(matchDetailarr.away.round2) + Number(matchDetailarr.away
+                .round3) + Number(matchDetailarr.away.round4);
+            fs = `${num1}-${num2}`
+        }
+        matchDetailHtml = `
+					<div class="live-name">${matchDetail.leagueNameEn}</div>
+					<div class="live-time">${getCommonTime(matchDetail.matchTime)}</div>
+					<div class="live-rival flexBox">
+						<div class="rival-info flexBox">
+							<img src="${matchDetail.homeTeamLogo}" alt="">
+							<span class="rival-name textWordBreak">${matchDetail.homeTeamNameEn}
+							</span>
+						</div>
+						<div class="rival-score">${fs}</div>
+						<div class="rival-info flexBox">
+							<img src="${matchDetail.awayTeamLogo}" alt="">
+							<span class="rival-name textWordBreak">${matchDetail.awayTeamNameEn}
+							</span>
+						</div>
+					</div>
+				`
+        if(histories.length > 0){
+            histories.forEach((item,index) =>{
+                historiesHtml += `
+							<li class="live-table-line flexBox">
+							    <div class="b-item">${getCommonTime(item.matchTime)}</div>
+							    <div class="b-item">${item.leagueNameEn}</div>
+							    <div class="b-item">${item.homeTeamNameEn}</div>
+							    <div class="b-item">${item.homeScore}-${item.awayScore}</div>
+							    <div class="b-item">${item.awayTeamNameEn}</div>
+							</li>
+						`
+            })
+        }
+        if(awayFutureMatches.length > 0){
+            awayFutureMatches.forEach((item,index) =>{
+                awayFutureMatchesHtml += `
+							<li class="live-table-line flexBox">
+							    <div class="b-item">${getCommonTime(item.matchTime)}</div>
+							    <div class="b-item">${item.leagueNameEn}</div>
+							    <div class="b-item">${item.homeTeamNameEn}</div>
+							    <div class="b-item">0-0</div>
+							    <div class="b-item">${item.awayTeamNameEn}</div>
+							</li>
+						`
+            })
+        }
+        if(awayRecentRecords.length > 0){
+            awayRecentRecords.forEach((item,index) =>{
+                awayRecentRecordsHtml += `
+							<li class="live-table-line flexBox">
+							    <div class="b-item">${getCommonTime(item.matchTime)}</div>
+							    <div class="b-item">${item.leagueNameEn}</div>
+							    <div class="b-item">${item.homeTeamNameEn}</div>
+							    <div class="b-item">${item.homeScore}-${item.awayScore}</div>
+							    <div class="b-item">${item.awayTeamNameEn}</div>
+							</li>
+						`
+            })
+        }
+        if(homeFutureMatches.length > 0){
+            homeFutureMatches.forEach((item,index) =>{
+                homeFutureMatchesHtml += `
+							<li class="live-table-line flexBox">
+							    <div class="b-item">${getCommonTime(item.matchTime)}</div>
+							    <div class="b-item">${item.leagueNameEn}</div>
+							    <div class="b-item">${item.homeTeamNameEn}</div>
+							    <div class="b-item">0-0</div>
+							    <div class="b-item">${item.awayTeamNameEn}</div>
+							</li>
+						`
+            })
+        }
+        if(homeRecentRecords.length > 0){
+            homeRecentRecords.forEach((item,index) =>{
+                homeRecentRecordsHtml += `
+							<li class="live-table-line flexBox">
+							    <div class="b-item">${getCommonTime(item.matchTime)}</div>
+							    <div class="b-item">${item.leagueNameEn}</div>
+							    <div class="b-item">${item.homeTeamNameEn}</div>
+							    <div class="b-item">${item.homeScore}-${item.awayScore}</div>
+							    <div class="b-item">${item.awayTeamNameEn}</div>
+							</li>
+						`
+            })
+        }
+        $("#matchDetail").html(matchDetailHtml)
+        $("#histories").html(historiesHtml)
+        $("#awayFutureMatches").html(awayFutureMatchesHtml)
+        $("#awayRecentRecords").html(awayRecentRecordsHtml)
+        $("#homeFutureMatches").html(homeFutureMatchesHtml)
+        $("#homeRecentRecords").html(homeRecentRecordsHtml)
+    }
+    function bsHtml(str,e){
+        $(e).addClass('on').siblings().removeClass('on');
+        console.log(str);
+        getBsHtml(str);
+    }
+
+
+    // 获取时间
+    function getCommonTime(str){
+        var unixTimestamp = new Date(str * 1000);
+        var commonTime = unixTimestamp.toLocaleString();
+        var arr = commonTime.split(' ');
+        var year = arr[0].split('/');
+        return year[0] + '-' + year[1] + '-' + year[2] + ' ' + arr[1];
+    }
+    // 是否在数组中
+    function inArray(str){
+        return $.inArray( str, lsArr );
+    }
+    // 获取参数
+    function getParams(key) {
+        var result = {} // 定义一个全局的对象
+        var str = window.location.search;
+        if(str.startsWith('?')) { // 判断str以？开头的
+            var strParams  = str.split('?')[1];
+            var arrParams = strParams.split('&');
+            //然后进行for循环，这里直接用了forEach
+            arrParams.forEach((item) => {
+                var temKey = item.split('=')[0];
+                var temVal = item.split('=')[1];
+                result[temKey] = temVal
+            })
+        }
+        return result[key]
+    }
+    // 完结
+    function ifMatchType(num,type){
+        switch (num){
+            case '1':
+                if(type != '8'){
+                    return true
+                }else{
+                    return false
+                }
+                break;
+            case '2':
+                if(type != '10'){
+                    return true
+                }else{
+                    return false
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    // 日期
+    function getTimerfun(num){
+        var timerHtml = ''
+        var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        let myDate = new Date();
+        for(var i = 0 ; i<num;i++){
+            myDate.setTime(myDate.getTime() + i * 24 * 60 * 60 * 1000);
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth()+1;
+            var day = myDate.getDate();
+            if(month > 0 & month < 10){
+                month = '0' + month;
+            }
+            if(day > 0 & day < 10){
+                day = '0' + day;
+            }
+            var week = myDate.getDay();
+            // weeks[week]
+
+            var date = year + '/' + month + '/' + day + ''
+            if(i === 0){
+                timerHtml +=`<p class="on" onClick="timerClick('${date}',this)">${date}&nbsp;&nbsp; ${weeks[week]}</p>`
+            }else{
+                timerHtml +=`<p  onClick="timerClick('${date}',this)">${date}&nbsp;&nbsp; ${weeks[week]}</p>`
+            }
+        }
+        $('#timerHtml').html(timerHtml);
+    }
+
+    function goToDet(type,id){
+        console.log(type,id);
+        location.href = `./scheduleDet?type=${type}&id=${id}`
+    }
+    function getData(obj){
+        list = []; // 全部
+        $.ajax({
+            async: true,
+            url: 'https://syty-h5.tymanage.com/base_api/sports/openApi/matchDetail',
+            type: 'GET',
+            data : { sportsId : sportsId,matchId : matchId },
+            dataType: 'json',
+            timeout: 30000,
+            success: function(res){
+                console.log(res);
+                var data = res.data;
+                histories = data.histories;
+                matchDetail = data.matchDetail;
+                homeFutureMatches = data.homeFutureMatches;
+                homeRecentRecords = data.homeRecentRecords;
+                awayFutureMatches = data.awayFutureMatches;
+                awayRecentRecords = data.awayRecentRecords;
+                xrHtml();
+            },
+            error: function(res) {
+
+            },
+
+        })
+    }
+</script>

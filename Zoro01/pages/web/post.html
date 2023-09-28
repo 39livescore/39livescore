@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	th:with="blogConfig=${@configTag.getConfigValueMap('vietnam')},post=${@articleTag.getWebArticleHtmlById(postId)}">
+	
+	<head th:if="${post!=null}">
+        <th:block th:include="vietnam/blog_include :: blogHeader(title=${post.articleTitle},
+        keywords=${post.keywords},
+        description=${post.description},
+        blogConfig=${blogConfig})" />
+    
+        <th:block th:include="vietnam/blog_include::footer_js" />
+	
+	</head>
+
+	<head th:if="${post==null}">
+		<th:block th:include="vietnam/blog_include :: blogHeader(title=${'你请求的文章我们没有找到到- '+blogConfig['oly.web.title']},
+	keywords='文章不存在,服务器故障',
+	description='文章可能不存在,文章没有找到,可能是服务器问题,可能文章已经删除',
+	blogConfig=${blogConfig})" />
+	</head>
+<body id="body">
+    <div class="bgOver">
+        <div class="n-container contentmain-list">
+            <div id="header"><th:block th:include="vietnam/blog_include::menu()" /></div>
+            <!-- 图文详情 -->
+            <div class="detail-box">
+                <div class="n-warpper">
+                    <!-- 多级链接 -->
+                    <div class="breadcrumb-link">
+                        <a th:href="${blogConfig['oly.web.domain']}+'/index'">TRANG CHU</a>
+<!--                        <div th:text="'/'+${post.getCmsCats[0].catName}"></div>-->
+                        <a href="javaScript:void(0)" class="linkTite" th:text="'/'+${post.articleTitle}">MAN UTD MO CUOC DAM PHAN VOI TIEN VE CHAT
+                            LUONG,GAN</a>
+                    </div>
+                    <!-- 文章标题 -->
+                    <div class="article-title">
+                        <p th:text="${post.articleTitle}">MAN UTD MO CUOC DAM PHAN VOITIEN VE CHAT LUONG,GA NHA SAP RADI</p>
+                        <div class="line"></div>
+                    </div>
+                    <!-- 文章日期点赞 -->
+                    <div class="article-info flexBox">
+                        <div class="art-time" th:text="${#dates.format(post.createTime,'yyyy-MM-dd')}">2023-02-09</div>
+                        <!--
+                        <div class="art-time" th:text="${post.createUser.userName}+'  '+${#dates.format(post.createTime,'yyyy-MM-dd')}">2023-02-09</div>
+                        <div class="art-handle flexBox">
+                            <div class="likebox flexBox">
+                                <img th:src="@{/themes/vietnam/resources/images/like.png}" alt="">
+                                <span th:text="${post.cmsArticleCount==null?0:post.cmsArticleCount.articleLook}">123</span>
+                            </div>
+                            <div class=" flexBox">
+                                <img th:src="@{/themes/vietnam/resources/images/comment.png}" alt="">
+                                <span th:text="${post.cmsArticleCount==null?0:post.cmsArticleCount.articleDiscuss}">123</span>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <!-- 文章正文 -->
+                    <div class="article-body">
+                        <div class="article-main" th:utext="${post.articleContent}">
+                            <p>T Sport noi tieng cua Tay Ban Nha d dua tin rang cau lac bo Man Utd d dam phan vbi tien
+                                ve xuat scRuben Neves cua Wolves.Cau thu ky cuu ngudi Bo Dao Nha dudc cho la se rdi san
+                                Molineux khi hop dongheihan vao mua he sap toi. V vic Barca rut khoi cuoc dua tranh
+                                gianh chi ky cua tien dao nay, thi Ouy do ldoi bong duy nhat con lai trong cuoc sn lung.
+                            </p>
+                            <p>Messi cht ben d cudi cung su nghiep khi ng ln dua ra quyet din<br/>hTan binh Retegui giup ltaly thang  vong loai Euro 2024
+                                <br/>Trong 17 tran dau lien tiep Ouang Hi khong ghi ban
+                            </p>
+                            <p class="p-st">Man Utd da dam phan vi tien ve Ruben Never<br/> De Jong khong con nam trong ke hoach cua Ouy do</p>
+                            <img th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="" srcset="">
+                            <p>Messi cht ben d cudi cung su nghiep khi ng ln dua ra quyet din<br/>hTan binh Retegui giup ltaly thang  vong loai Euro 2024
+                                <br/>Trong 17 tran dau lien tiep Ouang Hi khong ghi ban
+                            </p>
+                            <p>Messi cht ben d cudi cung su nghiep khi ng ln dua ra quyet din<br/>hTan binh Retegui giup ltaly thang  vong loai Euro 2024
+                                <br/>Trong 17 tran dau lien tiep Ouang Hi khong ghi ban
+                            </p>
+                        </div>
+                        <!--
+                        <div class="art-link-handle" th:with="tags=${#strings.isEmpty(post.keywords)?'':post.keywords.split(',')}">
+                            <a class="footer-href" th:each="tag:${tags}" th:href="${blogConfig['oly.web.domain']+'/advisory?keyWord='+tag}" th:utext="${tag}">Tien Lin</a>
+                        </div>
+                        -->
+                    </div>
+
+                    <h7>
+                        Các hình ảnh trên nguồn từ trang wed , Nếu phát hiện vi phạm vui lòng liên hệ kênh để xóa
+                    </h7>
+                </div>
+            </div>
+            <!-- 推荐列表 -->
+            <th:block th:include="vietnam/blog_include::rightCommon" />
+
+            <div id="footer" class="indexbox">
+                <!-- 底部导航 -->
+                <th:block th:include="vietnam/blog_include::bottom" />
+            </div>
+            <div id="msgBox">
+                <!-- 底部留言 -->
+                <th:block th:include="vietnam/blog_include::message" />
+            </div>
+            <div id="back-btn">
+                <!-- back -->
+                <th:block th:include="vietnam/blog_include::back" />
+            </div>
+            <div id="top-btn">
+                <!-- top -->
+                <th:block th:include="vietnam/blog_include::gotop" />
+            </div>
+            <div id="contact">
+                <!-- contact -->
+                <th:block th:include="vietnam/blog_include::contact" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    // $('#header').load('./header.html');
+    // $('#footer').load('./footer.html');
+    // $('#msgBox').load('./message.html');
+
+</script>

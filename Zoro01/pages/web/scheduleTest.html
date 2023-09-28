@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="blogConfig=${@configTag.getConfigValueMap('vietnam')}">
+
+	<head>
+		<th:block th:include="vietnam/blog_include :: blogHeader(title=${menu.remark+' - '+blogConfig['oly.web.title']},
+    keywords=${blogConfig['oly.web.aboutAuthor']},
+    description=${blogConfig['oly.web.authorIndex']},
+    blogConfig=${blogConfig})" />
+
+		<th:block th:include="vietnam/blog_include::footer_js" />
+	</head>
+
+	<body id="body">
+		<div class="bgOver">
+			<div class="n-container contentmain-list">
+				<div id="header">
+					<th:block th:include="vietnam/blog_include::menu()" />
+				</div>
+				<div class="n-warpper">
+					<!-- 分类 -->
+					<div class="competition-type">
+						<ul class="competition-ul flexBox" id="tabHtml">
+							<li class="competition-li active">Tổng cộng</li>
+							<li class="competition-li">Bóng đá</li>
+							<li class="competition-li">Bóng rổ</li>
+							<li class="competition-li">Siêu Liên Đoàn Trung Quốc</li>
+							<li class="competition-li">Ngoại hạng Anh</li>
+							<li class="competition-li">La Liga</li>
+							<li class="competition-li">Serie A</li>
+							<li class="competition-li">Bundesliga</li>
+							<li class="competition-li">Ligue 1</li>
+							<li class="competition-li">Hiệp hội Bóng rổ Quốc gia</li>
+							<li class="competition-li">Hiệp hội Bóng rổ Trung Quốc</li>
+							<li class="competition-li">Khác</li>
+						</ul>
+					</div>
+					<input type="hidden" th:value="@{/themes/vietnam/resources/images/left.png}" id="imgId">
+					<input type="hidden" th:value="${blogConfig['oly.web.domain']}" id="webUrl">
+					<input type="hidden" value="0" id="tabIndex">
+					<!-- 按日期分类 -->
+					<div class="schedule-date">
+						<ul class="date-ul" id="date-ul">
+							<li class="date-li">
+								<div class="date-list flexBox">
+									<div class="date-num">2023-06-01</div>
+									<div class="weekend">Thứ Năm</div>
+									<img class="date-arrow" th:src="@{/themes/vietnam/resources/images/left.png}"
+										alt="">
+								</div>
+								<!-- 折叠详情内容 -->
+								<div class="schedule-mainlist" style="display: block">
+									<ul class="schedule-ul">
+										<li class="schedule-li">
+											<div class="s-date flexBox">
+												<div class="s-time">
+													MYA D1
+													<span> 17:30</span>
+												</div>
+												<div class="s-play flexBox">
+													<img th:src="@{/themes/vietnam/resources/images/play1.png}" alt="">
+													<span class="textWordBreak"> Đang trựcĐang trựcĐang trực
+														tiếp...</span>
+												</div>
+											</div>
+											<div class="analogue-main flexBox">
+												<div class="analogue-rival flexBox">
+													<div class="analogue-name analogue-r flexBox">
+														<span class="name textWordBreak">
+															MyawadyMyawadyMyawadyMyawadyMyawadyMyawady
+														</span>
+														<img class="name-l"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+													</div>
+													<div class="analogue-vs">VS</div>
+													<div class="analogue-name flexBox">
+														<img class="name-r"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+														<span class="name textWordBreak">
+															MyawadyMyawadyMyawadyMyawadyMyawadyMyawady
+														</span>
+
+													</div>
+												</div>
+												<div class="score">0-0</div>
+												<div class="live-list">
+													<ul class="live-ul flexBox">
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</li>
+										<li class="schedule-li">
+											<div class="s-date flexBox">
+												<div class="s-time">
+													MYA D1
+													<span> 17:30</span>
+												</div>
+												<div class="s-play flexBox">
+													<img th:src="@{/themes/vietnam/resources/images/play1.png}" alt="">
+													<span class="textWordBreak"> Đang trựcĐang trựcĐang trực
+														tiếp...</span>
+												</div>
+											</div>
+											<div class="analogue-main flexBox">
+												<div class="analogue-rival flexBox">
+													<div class="analogue-name analogue-r flexBox">
+														<span class="name">
+															Myawady
+														</span>
+														<img class="name-l"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+													</div>
+													<div class="analogue-vs">VS</div>
+													<div class="analogue-name flexBox">
+														<img class="name-r"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+														<span class="name">
+															Myawady
+														</span>
+
+													</div>
+												</div>
+												<div class="score">0-0</div>
+												<div class="live-list">
+													<ul class="live-ul flexBox">
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</li>
+										<li class="schedule-li">
+											<div class="s-date flexBox">
+												<div class="s-time">
+													MYA D1
+													<span> 17:30</span>
+												</div>
+												<div class="s-play flexBox">
+													<img th:src="@{/themes/vietnam/resources/images/play1.png}" alt="">
+													<span class="textWordBreak"> Đang trựcĐang trựcĐang trực
+														tiếp...</span>
+												</div>
+											</div>
+											<div class="analogue-main flexBox">
+												<div class="analogue-rival flexBox">
+													<div class="analogue-name analogue-r flexBox">
+														<span class="name">
+															Myawady
+														</span>
+														<img class="name-l"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+													</div>
+													<div class="analogue-vs">VS</div>
+													<div class="analogue-name flexBox">
+														<img class="name-r"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+														<span class="name">
+															Myawady
+														</span>
+
+													</div>
+												</div>
+												<div class="score">0-0</div>
+												<div class="live-list">
+													<ul class="live-ul flexBox">
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="date-li">
+								<div class="date-list flexBox">
+									<div class="date-num">2023-06-01</div>
+									<div class="weekend">Thứ Năm</div>
+									<img class="date-arrow" th:src="@{/themes/vietnam/resources/images/left.png}"
+										alt="">
+								</div>
+								<!-- 折叠详情内容 -->
+								<div class="schedule-mainlist">
+									<ul class="schedule-ul">
+										<li class="schedule-li">
+											<div class="s-date flexBox">
+												<div class="s-time">
+													MYA D1
+													<span> 17:30</span>
+												</div>
+												<div class="s-play flexBox">
+													<img th:src="@{/themes/vietnam/resources/images/play1.png}" alt="">
+													<span class="textWordBreak"> Đang trựcĐang trựcĐang trực
+														tiếp...</span>
+												</div>
+											</div>
+											<div class="analogue-main flexBox">
+												<div class="analogue-rival flexBox">
+													<div class="analogue-name analogue-r  flexBox">
+														<span class="name">
+															Myawady
+														</span>
+														<img class="name-l"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+													</div>
+													<div class="analogue-vs">VS</div>
+													<div class="analogue-name flexBox">
+														<img class="name-r"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+														<span class="name">
+															Myawady
+														</span>
+
+													</div>
+												</div>
+												<div class="score">0-0</div>
+												<div class="live-list">
+													<ul class="live-ul flexBox">
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</li>
+										<li class="schedule-li">
+											<div class="s-date flexBox">
+												<div class="s-time">
+													MYA D1
+													<span> 17:30</span>
+												</div>
+												<div class="s-play flexBox">
+													<img th:src="@{/themes/vietnam/resources/images/play1.png}" alt="">
+													<span class="textWordBreak"> Đang trựcĐang trựcĐang trực
+														tiếp...</span>
+												</div>
+											</div>
+											<div class="analogue-main flexBox">
+												<div class="analogue-rival flexBox">
+													<div class="analogue-name analogue-r  flexBox">
+														<span class="name">
+															Myawady
+														</span>
+														<img class="name-l"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+													</div>
+													<div class="analogue-vs">VS</div>
+													<div class="analogue-name flexBox">
+														<img class="name-r"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+														<span class="name">
+															Myawady
+														</span>
+
+													</div>
+												</div>
+												<div class="score">0-0</div>
+												<div class="live-list">
+													<ul class="live-ul flexBox">
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</li>
+										<li class="schedule-li">
+											<div class="s-date flexBox">
+												<div class="s-time">
+													MYA D1
+													<span> 17:30</span>
+												</div>
+												<div class="s-play flexBox">
+													<img th:src="@{/themes/vietnam/resources/images/play1.png}" alt="">
+													<span class="textWordBreak"> Đang trựcĐang trựcĐang trực
+														tiếp...</span>
+												</div>
+											</div>
+											<div class="analogue-main flexBox">
+												<div class="analogue-rival flexBox">
+													<div class="analogue-name analogue-r flexBox">
+														<span class="name">
+															Myawady
+														</span>
+														<img class="name-l"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+													</div>
+													<div class="analogue-vs">VS</div>
+													<div class="analogue-name flexBox">
+														<img class="name-r"
+															th:src="@{/themes/vietnam/resources/images/img.jpg}" alt="">
+														<span class="name">
+															Myawady
+														</span>
+
+													</div>
+												</div>
+												<div class="score">0-0</div>
+												<div class="live-list">
+													<ul class="live-ul flexBox">
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+														<li class="live-li">
+															<a class="live-href flexBox" href="javaScript:void(0)">
+																<img th:src="@{/themes/vietnam/resources/images/img.jpg}"
+																	alt="">
+																<div class="live-btn">LIVE</div>
+																<div class="live-name">SÙNG A MÚP</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="footer" class="indexbox">
+					<!-- 底部导航 -->
+					<th:block th:include="vietnam/blog_include::bottom" />
+				</div>
+				<div id="msgBox">
+					<!-- 底部留言 -->
+					<th:block th:include="vietnam/blog_include::message" />
+				</div>
+				<div id="back-btn">
+					<!-- back -->
+					<th:block th:include="vietnam/blog_include::back" />
+				</div>
+				<div id="top-btn">
+					<!-- top -->
+					<th:block th:include="vietnam/blog_include::gotop" />
+				</div>
+				<div id="contact">
+					<!-- contact -->
+					<th:block th:include="vietnam/blog_include::contact" />
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<th:block th:include="vietnam/blog_include::footer_js" />
+<script type="text/javascript">
+	// $('#header').load('./header.html');
+	// $('#footer').load('./footer.html');
+	// $('#msgBox').load('./message.html');
+	// $('.date-li').click(function () {
+	//     $(this).children('.schedule-mainlist').slideToggle();
+	//     $(this).children('.date-list').children('.date-arrow').toggleClass('arr-rotate')
+	// })
+
+	var arr = [];
+	var lsArr = ['Tổng cộng', 'Bóng đá', 'Bóng rổ', 'Siêu Liên Đoàn Trung Quốc', 'Ngoại hạng Anh', 'La Liga', 'Serie A',
+		'Bundesliga', 'Ligue 1', 'Hiệp hội Bóng rổ Quốc gia', 'Hiệp hội Bóng rổ Trung Quốc', 'Khác'
+	];
+	var list = []; // 全部
+	var list0 = [],
+		list1 = [],
+		list2 = [],
+		list3 = [],
+		list4 = [],
+		list5 = [],
+		list6 = [],
+		list7 = [],
+		list8 = [],
+		list9 = [],
+		list10 = [],
+		list11 = [];
+	var imgId = $('#imgId').get(0).value;
+	var webUrl = $('#webUrl').get(0).value;
+
+	$(document).ready(function() {
+
+
+		var year = new Date().getFullYear();
+		var month = new Date().getMonth() + 1;
+		var day = new Date().getDate();
+		if (month > 0 & month < 10) {
+			month = '0' + month;
+		}
+		if (day > 0 & day < 10) {
+			day = '0' + day;
+		}
+		var date = year + '/' + month + '/' + day
+		// console.log(date);
+		// console.log(getCommonTime(1685161800));
+		// console.log(inArray(4));
+		// console.log(inArray(6));
+		getTimerfun(8);
+		getData(date);
+		xrHtml();
+	})
+	// xrHtml
+	function xrHtml() {
+		var tabHtml = '';
+		lsArr.forEach((item, index) => {
+			if (index === 0) {
+				tabHtml += `<li class="competition-li active" onClick="bsHtml(${index},this)">${item}</li>`
+
+			} else {
+				tabHtml += `<li class="competition-li" onClick="bsHtml(${index},this)">${item}</li>`
+			}
+		})
+		$('#tabHtml').html(tabHtml);
+	}
+
+	function bsHtml(str, e) {
+		$(e).addClass('active').siblings().removeClass('active');
+		console.log(str);
+		getBsHtml(str);
+	}
+
+	function timerClick(str, e, date) {
+		$('#tabIndex').get(0).value = str;
+		if (!$(e).children('.date-list').children('.date-arrow').hasClass('arr-rotate')) {
+			getData(date);
+		}
+		$(e).children('.schedule-mainlist').slideToggle();
+		$(e).children('.date-list').children('.date-arrow').toggleClass('arr-rotate');
+		$(e).siblings().children('.date-list').children('.date-arrow').removeClass('arr-rotate');
+
+	}
+	// 非中文状态显示：1- not started 2-in progress  3- completed 4-abnormal
+	function getMatchStatus(type,num){
+		var html = ''
+		switch (Number(num)){
+			case 0:
+				html = `
+					<div class="s-play flexBox">
+						<span class="textWordBreak">0</span>
+					</div>
+				`
+				break;
+			case 1:
+				html = `
+					<div class="s-play flexBox">
+						<span class="textWordBreak"></span>
+					</div>
+				`
+				break;
+			case 2:
+				html = `
+					<div class="s-play flexBox">
+						<span class="textWordBreak">in progress</span>
+					</div>
+				`
+				break;
+			case 3:
+				html = `
+					<div class="s-play flexBox">
+						<span class="textWordBreak">completed</span>
+					</div>
+				`
+				break;
+			case 4:
+				html = `
+					<div class="s-play flexBox">
+						<span class="textWordBreak">abnormal</span>
+					</div>
+				`
+				break;
+			default:
+				break;
+		}
+		return html;
+	}
+	function getBsHtml(str) {
+		// <img src="./img/live.png" alt="">
+		var bsHtml = '';
+		var index = $('#tabIndex').get(0).value
+		var str = parseInt(str);
+		switch (str) {
+
+			case 0:
+				list.forEach((item, index) => {
+					// var zhubo = ''
+					// var zhuboArr = JSON.parse(item[20]);
+					// if(zhuboArr.length > 0){
+					// 	zhuboArr.forEach((items,indexs) =>{
+					// 		zhubo += `
+					// 			<div class="anchor-item">
+					// 				<div class="anchor-img">
+					// 					<img src="${items[2]}" alt="">
+					// 				</div>
+					// 				<p>${item[1]}</p>
+					// 			</div>
+					// 		`
+					// 	})
+					// }
+					var score = ''
+					var liveHtml= "";
+					var matchStatus;
+					var jsonArr = JSON.parse(item[19]);
+					if (item[0] == '1') {
+						score = `${jsonArr.home.score}-${jsonArr.away.score}`;
+						matchStatus = getMatchStatus(true,item[3]);
+					} else {
+						var num1 = Number(jsonArr.home.round1) + Number(jsonArr.home.round2) + Number(jsonArr
+							.home.round3) + Number(jsonArr.home.round4);
+						var num2 = Number(jsonArr.away.round1) + Number(jsonArr.away.round2) + Number(jsonArr
+							.away.round3) + Number(jsonArr.away.round4);
+						score = `${num1}-${num2}`
+						matchStatus = getMatchStatus(false,item[3]);
+					}
+					
+					var listArr = JSON.parse(item[20]);
+					if (listArr.length > 0) {
+						var zhubo = "";
+						listArr.forEach((zbItem, zbIndex) => {
+							zhubo += `
+								<li class="live-li">
+								    <a class="live-href flexBox" href="javaScript:void(0)">
+								        <img src="${zbItem[2]}" alt="">
+								        <div class="live-btn">LIVE</div>
+								        <div class="live-name">${zbItem[1]}</div>
+								    </a>
+								</li>
+							`
+						})
+						liveHtml = `
+							<div class="live-list">
+								<ul class="live-ul flexBox">
+								   ${zhubo}
+								</ul>
+							</div>
+						`
+					}
+					bsHtml += `
+						<li class="schedule-li" onClick="goToDet(${item[0]},${item[1]})">
+						    <div class="s-date flexBox">
+						        <div class="s-time">
+						            MYA D1
+						            <span> ${getCommonTime(item[2])}</span>
+						        </div>
+								${matchStatus}
+						    </div>
+						    <div class="analogue-main flexBox">
+						        <div class="analogue-rival flexBox">
+						            <div class="analogue-name analogue-r flexBox">
+						                <span class="name">
+						                    ${item[22]}
+						                </span>
+						                <img src="${item[13]}" alt="">
+						            </div>
+						            <div class="analogue-vs">VS</div>
+						            <div class="analogue-name flexBox">
+						                <img class="name-r" src="${item[15]}" alt="">
+						                <span class="name">
+						                   ${item[23]}
+						                </span>
+
+						            </div>
+						        </div>
+						        <div class="score">${score}</div>
+									${liveHtml}
+
+						    </div>
+						</li>
+					`
+				})
+				$(`#item${index}`).html(bsHtml);
+				break;
+			case 1:
+				list.forEach((item, index) => {
+					if (item[0] == '1') {
+						var jsonArr = JSON.parse(item[19]);
+						var score =
+							`${jsonArr.home.score}-${jsonArr.away.score}`
+						var liveHtml;
+						var listArr = JSON.parse(item[20]);
+						var matchStatus;
+						matchStatus = getMatchStatus(true,item[3]);
+						if (listArr.length > 0) {
+							var zhubo;
+							listArr.forEach((zbItem, zbIndex) => {
+								zhubo += `
+									<li class="live-li">
+									    <a class="live-href flexBox" href="javaScript:void(0)">
+									        <img th:src="${zbItem[2]}" alt="">
+									        <div class="live-btn">LIVE</div>
+									        <div class="live-name">${zbItem[1]}</div>
+									    </a>
+									</li>
+								`
+							})
+							liveHtml = `
+								<div class="live-list">
+									<ul class="live-ul flexBox">
+									   ${zhubo}
+									</ul>
+								</div>
+							`
+						}
+						bsHtml += `<li class="schedule-li" onClick="goToDet(${item[0]},${item[1]})">
+						    <div class="s-date flexBox">
+						        <div class="s-time">
+						            MYA D1
+						            <span> ${getCommonTime(item[2])}</span>
+						        </div>
+								${matchStatus}
+						    </div>
+						    <div class="analogue-main flexBox">
+						        <div class="analogue-rival flexBox">
+						            <div class="analogue-name analogue-r flexBox">
+						                <span class="name">
+						                    ${item[22]}
+						                </span>
+						                <img src="${item[13]}" alt="">
+						            </div>
+						            <div class="analogue-vs">VS</div>
+						            <div class="analogue-name flexBox">
+						                <img class="name-r" src="${item[15]}" alt="">
+						                <span class="name">
+						                   ${item[23]}
+						                </span>
+
+						            </div>
+						        </div>
+						        <div class="score">${score}</div>
+								${liveHtml}
+						    </div>
+						</li>
+					`
+					}
+				})
+				$(`#item${index}`).html(bsHtml);
+				break;
+			case 2:
+				list.forEach((item, index) => {
+					if (item[0] == '2') {
+						var jsonArr = JSON.parse(item[19]);
+						var score = '';
+						var num1 = Number(jsonArr.home.round1) + Number(jsonArr.home.round2) + Number(jsonArr
+							.home.round3) + Number(jsonArr.home.round4);
+						var num2 = Number(jsonArr.away.round1) + Number(jsonArr.away.round2) + Number(jsonArr
+							.away.round3) + Number(jsonArr.away.round4);
+						score = `${num1}-${num2}</p>`
+						var liveHtml;
+						var listArr = JSON.parse(item[20]);
+						var matchStatus;
+						matchStatus = getMatchStatus(false,item[3]);
+						if (listArr.length > 0) {
+							var zhubo;
+							listArr.forEach((zbItem, zbIndex) => {
+								zhubo += `
+									<li class="live-li">
+									    <a class="live-href flexBox" href="javaScript:void(0)">
+									        <img th:src="${zbItem[2]}" alt="">
+									        <div class="live-btn">LIVE</div>
+									        <div class="live-name">${zbItem[1]}</div>
+									    </a>
+									</li>
+								`
+							})
+							liveHtml = `
+								<div class="live-list">
+									<ul class="live-ul flexBox">
+									   ${zhubo}
+									</ul>
+								</div>
+							`
+						}
+						bsHtml += `
+							<li class="schedule-li" onClick="goToDet(${item[0]},${item[1]})">
+							    <div class="s-date flexBox">
+							        <div class="s-time">
+							            MYA D1
+							            <span> ${getCommonTime(item[2])}</span>
+							        </div>
+									${matchStatus}
+							    </div>
+							    <div class="analogue-main flexBox">
+							        <div class="analogue-rival flexBox">
+							            <div class="analogue-name analogue-r flexBox">
+							                <span class="name">
+							                    ${item[22]}
+							                </span>
+							                <img src="${item[13]}" alt="">
+							            </div>
+							            <div class="analogue-vs">VS</div>
+							            <div class="analogue-name flexBox">
+							                <img class="name-r" src="${item[15]}" alt="">
+							                <span class="name">
+							                   ${item[23]}
+							                </span>
+
+							            </div>
+							        </div>
+							        <div class="score">${score}</div>
+									${liveHtml}
+							    </div>
+							</li>
+					`
+					}
+				})
+				$(`#item${index}`).html(bsHtml);
+				break;
+			default:
+				onclickqt(str)
+				break;
+		}
+	}
+
+	function onclickqt(str) {
+		var bsHtml = '';
+		var arr = [];
+		var tabIndex = $('#tabIndex').get(0).value
+		switch (str) {
+			case 3:
+				arr = list3;
+				break;
+			case 4:
+				arr = list4;
+				break;
+			case 5:
+				arr = list5;
+				break;
+			case 6:
+				arr = list6;
+				break;
+			case 7:
+				arr = list7;
+				break;
+			case 8:
+				arr = list8;
+				break;
+			case 9:
+				arr = list9;
+				break;
+			case 10:
+				arr = list10;
+				break;
+			case 11:
+				arr = list11;
+				break;
+			default:
+				break;
+		}
+		arr.forEach((item, index) => {
+			var score = ''
+			var jsonArr = JSON.parse(item[19]);
+			var matchStatus;
+			if (item[0] == '1') {
+				score =
+					`${jsonArr.home.score}-${jsonArr.away.score}`
+					matchStatus = getMatchStatus(true,item[3]);
+			} else {
+				var num1 = Number(jsonArr.home.round1) + Number(jsonArr.home.round2) + Number(jsonArr.home
+					.round3) + Number(jsonArr.home.round4);
+				var num2 = Number(jsonArr.away.round1) + Number(jsonArr.away.round2) + Number(jsonArr.away
+					.round3) + Number(jsonArr.away.round4);
+				score = `${num1}-${num2}`
+				matchStatus = getMatchStatus(false,item[3]);
+			}
+			var liveHtml;
+			var listArr = JSON.parse(item[20]);
+			if (listArr.length > 0) {
+				var zhubo;
+				listArr.forEach((zbItem, zbIndex) => {
+					zhubo += `
+												<li class="live-li">
+												    <a class="live-href flexBox" href="javaScript:void(0)">
+												        <img th:src="${zbItem[2]}" alt="">
+												        <div class="live-btn">LIVE</div>
+												        <div class="live-name">${zbItem[1]}</div>
+												    </a>
+												</li>
+											`
+				})
+				liveHtml = `
+											<div class="live-list">
+												<ul class="live-ul flexBox">
+												   ${zhubo}
+												</ul>
+											</div>
+										`
+			}
+			bsHtml += `
+					<li class="schedule-li" onClick="goToDet(${item[0]},${item[1]})">
+						<div class="s-date flexBox">
+							<div class="s-time">
+								MYA D1
+								<span> ${getCommonTime(item[2])}</span>
+							</div>
+							${matchStatus}
+						</div>
+						<div class="analogue-main flexBox">
+							<div class="analogue-rival flexBox">
+								<div class="analogue-name analogue-r flexBox">
+									<span class="name">
+										${item[22]}
+									</span>
+									<img src="${item[13]}" alt="">
+								</div>
+								<div class="analogue-vs">VS</div>
+								<div class="analogue-name flexBox">
+									<img class="name-r" src="${item[15]}" alt="">
+									<span class="name">
+									   ${item[23]}
+									</span>
+
+								</div>
+							</div>
+							<div class="score">${score}</div>
+							${liveHtml}
+						</div>
+					</li>
+			`
+		})
+		$(`#item${tabIndex}`).html(bsHtml);
+	}
+	// 获取时间
+	function getCommonTime(str) {
+		var unixTimestamp = new Date(str * 1000);
+		var commonTime = unixTimestamp.toLocaleString();
+
+		var arr = commonTime.split(' ');
+		var timer = arr[1].split(':');
+		return timer[0] + ':' + timer[1];
+	}
+	// 是否在数组中
+	function inArray(str) {
+		return $.inArray(str, lsArr);
+	}
+	// 足球篮球
+	function ifSportsId(str) {
+		switch (str) {
+			case '1':
+				return true
+				break;
+			case '2':
+				return false
+				break;
+			default:
+				break;
+		}
+	}
+	// 完结
+	function ifMatchType(num, type) {
+		switch (num) {
+			case '1':
+				if (type != '8') {
+					return true
+				} else {
+					return false
+				}
+				break;
+			case '2':
+				if (type != '10') {
+					return true
+				} else {
+					return false
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	// 输入
+	function pushArr(str, item) {
+		switch (str) {
+			case 0:
+				list0.push(item);
+				break;
+			case 1:
+				list1.push(item);
+				break;
+			case 2:
+				list2.push(item);
+				break;
+			case 3:
+				list3.push(item);
+				break;
+			case 4:
+				list4.push(item);
+				break;
+			case 5:
+				list5.push(item);
+				break;
+			case 6:
+				list6.push(item);
+				break;
+			case 7:
+				list7.push(item);
+				break;
+			case 8:
+				list8.push(item);
+				break;
+			case 9:
+				list9.push(item);
+				break;
+			case 10:
+				list10.push(item);
+				break;
+			case 11:
+				list11.push(item);
+				break;
+			default:
+				break;
+		}
+	}
+	// 日期
+	function getTimerfun(num) {
+		console.log(1231234444);
+		var timerHtml = ''
+		var weeks = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ Tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
+		let myDate = new Date();
+		for (var i = 0; i < num; i++) {
+			var hh = new Date(myDate.getTime() + (1000 * 60 * 60 * 24 * i))
+			var year = hh.getFullYear();
+			var month = hh.getMonth() + 1;
+			var day = hh.getDate();
+			if (month > 0 & month < 10) {
+				month = '0' + month;
+			}
+			if (day > 0 & day < 10) {
+				day = '0' + day;
+			}
+			var week = hh.getDay();
+			// weeks[week]
+
+			var date = year + '/' + month + '/' + day + ''
+			// if (i === 0) {
+			// 	timerHtml += `<p class="on" onClick="timerClick('${date}',this)">${date}&nbsp;&nbsp; ${weeks[week]}</p>`
+			// } else {
+			// 	timerHtml += `<p  onClick="timerClick('${date}',this)">${date}&nbsp;&nbsp; ${weeks[week]}</p>`
+			// }
+
+
+			if (i === 0) {
+				timerHtml += `
+					<li class="date-li" onClick="timerClick(${i},this,'${date}')">
+						<div class="date-list flexBox">
+							<div class="date-num">${date}</div>
+							<div class="weekend">${weeks[week]}</div>
+							<img class="date-arrow arr-rotate" src="${imgId}" alt="">
+						</div>
+						<div class="schedule-mainlist" style="display: block">
+							<ul class="schedule-ul" id="item${i}">
+							  
+							<ul>
+						</div>
+					</li>
+				`
+			} else {
+				timerHtml += `
+					<li class="date-li" onClick="timerClick(${i},this,'${date}')">
+							<div class="date-list flexBox">
+								<div class="date-num">${date}</div>
+								<div class="weekend">${weeks[week]}</div>
+								<img class="date-arrow" src="${imgId}" alt="">
+							</div>
+							<div class="schedule-mainlist">
+								<ul class="schedule-ul" id="item${i}">
+								  
+								<ul>
+							</div>
+					</li>
+				`
+			}
+
+		}
+		$('#date-ul').html(timerHtml);
+	}
+
+
+	function goToDet(type, id) {
+		console.log(type, id);
+		location.href = `${webUrl}/scheduleDet?type=${type}&id=${id}`
+	}
+
+	function getData(date, e) {
+		list = []; // 全部
+		list0 = [], list1 = [], list2 = [], list3 = [], list4 = [],
+			list5 = [], list6 = [], list7 = [], list8 = [], list9 = [], list10 = [], list11 = [];
+		$.ajax({
+			async: true,
+			url: 'https://syty-h5.tymanage.com/base_api/sports/openApi/getMatchs',
+			type: 'GET',
+			data: {
+				data: date
+			},
+			dataType: 'json',
+			timeout: 30000,
+			success: function(res) {
+				console.log(res);
+				var data = res.data;
+				data.forEach((item, index) => {
+					if (ifSportsId(item[0], item[4])) {
+						if (ifMatchType('1', item[4])) {
+							if (inArray(item[5]) > 0) {
+								pushArr(inArray(item[5]), item)
+							} else {
+								pushArr(11, item)
+							}
+							list.push(item)
+						}
+					} else {
+						if (ifMatchType('2', item[4])) {
+							if (inArray(item[5]) >= 0) {
+								pushArr(inArray(item[5]), item)
+							} else {
+								pushArr(11, item)
+							}
+							list.push(item)
+						}
+					}
+				})
+				console.log(list0);
+				console.log(list1);
+				console.log(list2);
+				console.log(list3);
+				console.log(list4);
+				console.log(list5);
+				console.log(list6);
+				console.log(list7);
+				console.log(list8);
+				console.log(list9);
+				var index = $('#tabIndex').get(0).value
+				getBsHtml(index);
+			},
+			error: function(res) {
+
+			},
+
+		})
+	}
+</script>
